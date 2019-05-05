@@ -22,9 +22,9 @@
 
 <script>
 import { mapGetters, mapActions, mapMutations } from "vuex";
-import Header from "./components/partials/Header.vue";
-import Footer from "./components/partials/Footer.vue";
-import ProgressBar from "./components/partials/ProgressBar.vue";
+import Header from "./components/partials/VHeader.vue";
+import Footer from "./components/partials/VFooter.vue";
+import ProgressBar from "./components/partials/VProgressBar.vue";
 
 export default {
   data() {
@@ -39,7 +39,7 @@ export default {
     }),
 
     loaderStyle() {
-      return `width: ${this.loadingProgress}%;`;
+      return 'width: ${this.loadingProgress}%;';
     }
   },
 
