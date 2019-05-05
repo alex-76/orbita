@@ -10,11 +10,11 @@
       <progress-bar :show-loader="showLoader" :loader-style="loaderStyle"/>
     </transition>
 
-    <transition name="page-transition" mode="out-in" appear>
       <div class="uk-container content">
-        <router-view></router-view>
+        <transition name="page-transition" mode="out-in">
+          <router-view></router-view>
+        </transition>
       </div>
-    </transition>
 
     <app-footer/>
   </div>

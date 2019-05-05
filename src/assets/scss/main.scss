@@ -23,3 +23,38 @@ body {
     color: #41c6ff;
   }
 }
+
+/*** Animation ***/
+.page-transition-enter-active {
+  transition: opacity 1s ease-out;
+  color: #16994d;
+}
+.page-transition-enter, .page-transition-leave-to  {
+  opacity: 0;
+}
+
+
+/*
+.page-transition-enter-active {
+     animation: fadeIn .7s;
+ }
+.page-transition-leave-active {
+    animation: fadeIn .7s reverse;
+}
+
+@keyframes fadeIn {
+    0% {
+        transform: scale(0.1);
+        opacity: 0;
+        color: #e0e0e0;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+        color: #959595;
+    }
+    100% {
+        transform: scale(1);
+        color: #393939;
+    }
+}*/
