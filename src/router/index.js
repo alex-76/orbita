@@ -3,9 +3,9 @@ import Vue from "vue";
 import Router from "vue-router";
 
 // Components
-import Home from "../components/Home.vue";
-import Post from "../components/Post/Post.vue";
-import Page from "../components/Page/Page.vue";
+import Home from "../components/VHome.vue";
+import Post from "../components/Post/VPost.vue";
+import Page from "../components/Page/VPage.vue";
 
 Vue.use(Router);
 

@@ -65,6 +65,13 @@ module.exports = {
         })
       },
       {
+        test: /main.scss/,
+        use:  [
+          'style-loader',
+          'css-loader', 'sass-loader'
+        ]
+      },
+      {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           {

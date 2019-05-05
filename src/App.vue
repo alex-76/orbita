@@ -11,7 +11,7 @@
     </transition>
 
     <transition name="page-transition" mode="out-in" appear>
-      <div class="site-content">
+      <div class="uk-container content">
         <router-view></router-view>
       </div>
     </transition>

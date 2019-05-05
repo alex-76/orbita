@@ -1,0 +1,23 @@
+@import "lib/uikit/_vars";
+@import "lib/uikit/_fonts";
+@import "lib/uikit/_libs";
+
+@import "custom/_header";
+@import "custom/_footer";
+
+body {
+  background: #2aff91;
+  color: blue;
+  font-size: 16px;
+  font-family: Tahoma;
+  border: none;
+  margin-top: 15px;
+
+  h3 {
+    margin-top: 100px;
+    font-size: 66px;
+    span {
+      color: #801d34;
+    }
+  }
+}

@@ -6,13 +6,20 @@ import App from "./App.vue";
 import store from "./store";
 import * as types from "./store/mutation-types";
 
-import "./assets/css/styles.css";
+import UIkit from 'uikit';
+import Icons from 'uikit/dist/js/uikit-icons';
+UIkit.use(Icons);
+
+//import "./assets/css/styles.css";
+import './assets/scss/main.scss';
 
 new Vue({
   el: "#app",
   store,
   router,
-  render: h => h(App),
+  //render: h => h(App),
+  components: { App },
+  template: '<App/>',
   created() {
     this.$store.commit(types.RESET_LOADING_PROGRESS);
     this.$store.dispatch("getAllCategories");
