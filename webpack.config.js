@@ -54,23 +54,15 @@ module.exports = {
           }
         }
       },
+
       {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            { loader: "css-loader", options: { importLoaders: 1 } },
-            "postcss-loader"
-          ]
-        })
+          test: /\.scss$/,
+          use: ExtractTextPlugin.extract({
+              fallback: 'style-loader',
+              use: ['css-loader', 'sass-loader']
+          })
       },
-      {
-        test: /main.scss/,
-        use:  [
-          'style-loader',
-          'css-loader', 'sass-loader'
-        ]
-      },
+
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
@@ -108,6 +100,6 @@ module.exports = {
       ecma: 8
     }),
     new webpack.LoaderOptionsPlugin({ minimize: true }),
-    new ExtractTextPlugin("styles.css")
+    new ExtractTextPlugin("main.min.css")
   ]
 };

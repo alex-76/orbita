@@ -20,9 +20,9 @@ function load_vue_scripts() {
 
 	wp_enqueue_style(
 		'vuejs-wordpress-theme-starter-css',
-		get_stylesheet_directory_uri() . '/dist/styles.css',
+		get_stylesheet_directory_uri() . '/dist/main.min.css',
 		null,
-		filemtime( get_stylesheet_directory() . '/dist/styles.css' )
+		filemtime( get_stylesheet_directory() . '/dist/main.min.css' )
 	);
 }
 add_action( 'wp_enqueue_scripts', 'load_vue_scripts', 100 );
