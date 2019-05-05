@@ -10,14 +10,12 @@ import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 UIkit.use(Icons);
 
-//import "./assets/css/styles.css";
 import './assets/scss/main.scss';
 
 new Vue({
   el: "#app",
   store,
   router,
-  //render: h => h(App),
   components: { App },
   template: '<App/>',
   created() {

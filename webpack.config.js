@@ -54,15 +54,30 @@ module.exports = {
           }
         }
       },
-
       {
           test: /\.scss$/,
           use: ExtractTextPlugin.extract({
               fallback: 'style-loader',
-              use: ['css-loader', 'sass-loader']
+              use: [
+                  {
+                      loader: 'css-loader',
+                      options: {
+                          // If you are having trouble with urls not resolving add this setting.
+                          // See https://github.com/webpack-contrib/css-loader#url
+                          //url: false,
+                          minimize: true,
+                          sourceMap: true
+                      }
+                  },
+                  {
+                      loader: 'sass-loader',
+                      options: {
+                          sourceMap: true
+                      }
+                  }
+              ]
           })
       },
-
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
@@ -90,6 +105,7 @@ module.exports = {
       vue$: "vue/dist/vue.esm.js"
     }
   },
+  devtool: 'source-map',
   plugins: [
     new webpack.ProvidePlugin({
       throttle: "lodash.throttle"

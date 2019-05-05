@@ -1,3 +1,5 @@
 <template>
-  <header class="site-header">This is the Header</header>
+  <header>
+    <h3>This is the Header</h3>
+  </header>
 </template>
