@@ -12,6 +12,17 @@
   export default {
     name: 'VMyPage',
     props: ['text','type'],
+
+    created:function () {
+
+      console.log('created');
+      
+    },
+    mounted:function () {
+
+      console.log('mounted:');
+
+    }
   }
 
 </script>
