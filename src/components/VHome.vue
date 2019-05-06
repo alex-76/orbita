@@ -6,6 +6,8 @@
 
     <recent-posts-widget limit="5">Recent Posts</recent-posts-widget>
     <pages-widget limit="5">Pages</pages-widget>
+
+    <MyPage></MyPage>
   </div>
 </template>
 
@@ -13,10 +15,13 @@
 import RecentPostsWidget from "./widgets/RecentPosts.vue";
 import PagesWidget from "./widgets/Pages.vue";
 
+import MyPage from "./widgets/MyPage.vue";
+
 export default {
   components: {
     RecentPostsWidget,
-    PagesWidget
+    PagesWidget,
+    MyPage
   }
 };
 </script>
