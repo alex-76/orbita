@@ -1,6 +1,7 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require("webpack");
 const path = require("path");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -10,8 +11,12 @@ module.exports = {
   stats: { warnings: false }, // Hide warnings
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "scripts/[name].bundle.js"
+    filename: "scripts/[name].bundle.js",
+    library : 'app'
   },
+  // devServer: {
+  //   overlay : true
+  // },
   module: {
     rules: [
       {
@@ -107,6 +112,7 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
+    new CleanWebpackPlugin(),
     new webpack.ProvidePlugin({
       throttle: "lodash.throttle"
     }),

@@ -1,4 +1,8 @@
 <?php
+
+define('THEME_DIR_PATH', get_template_directory());
+define('THEME_DIR_URI', get_template_directory_uri());
+
 // Remove all default WP template redirects/lookups
 remove_action( 'template_redirect', 'redirect_canonical' );
 
@@ -11,16 +15,16 @@ add_action( 'init', 'remove_redirects' );
 // Load scripts
 function load_vue_scripts() {
 	wp_enqueue_script(
-		'vuejs-wordpress-theme-starter-js',
-		get_stylesheet_directory_uri() . '/dist/scripts/index.min.bundle.js',
+		'vuejs-wp-js',
+        THEME_DIR_URI . '/dist/scripts/index.min.bundle.js',
 		array( 'jquery' ),
 		filemtime( get_stylesheet_directory() . '/dist/scripts/index.min.bundle.js' ),
 		true
 	);
 
 	wp_enqueue_style(
-		'vuejs-wordpress-theme-starter-css',
-		get_stylesheet_directory_uri() . '/dist/main.min.css',
+		'vuejs-wp-css',
+        THEME_DIR_URI . '/dist/main.min.css',
 		null,
 		filemtime( get_stylesheet_directory() . '/dist/main.min.css' )
 	);
