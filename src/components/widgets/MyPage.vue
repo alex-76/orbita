@@ -50,15 +50,15 @@
         // Test Woocomerce API
         // https://local.wordpress.dev/wp-json/wc/v2/orders?consumer_key=XXXX&consumer_secret=XXXX
         //curl https://www.example.com/wp-json/wc/v3/orders?consumer_key=123&consumer_secret=abc
-        axios.get(SETTINGS.API_BASE_WC_PATH + "products?" +
-                "consumer_key= ck_88576ba2b89a37a263111991a2fc2989dde5bdf5&"+
-                "consumer_secret=cs_cea88e4c1738706d5dbc5cf5aae17e191d0a2876")
-            .then( function (response) {
-                console.log(response);
-            })
-            .catch( function (error) {
-                console.log(error.response)
-            });
+//        axios.get(SETTINGS.API_BASE_WC_PATH + "products?" +
+//                "consumer_key= ck_88576ba2b89a37a263111991a2fc2989dde5bdf5&"+
+//                "consumer_secret=cs_cea88e4c1738706d5dbc5cf5aae17e191d0a2876")
+//            .then( function (response) {
+//                console.log(response);
+//            })
+//            .catch( function (error) {
+//                console.log(error.response)
+//            });
 
 
 
