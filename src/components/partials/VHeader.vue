@@ -9,14 +9,9 @@
             <router-link class="nav-link" to="/">Home</router-link>
           </li>
           <li>
-            <a href="#">Pages</a>
-            <div class="uk-navbar-dropdown">
-              <ul class="uk-nav uk-navbar-dropdown-nav">
-                <li class="uk-active"><a href="#">Active</a></li>
-                <li><a href="#">Item</a></li>
-                <li><a href="#">Item</a></li>
-              </ul>
-            </div>
+            <router-link :to="{name: 'Page', params: {pageSlug: 'my-page'}}"
+                         class="nav-link">Pages
+            </router-link>
           </li>
           <li><a href="#">Posts</a></li>
           <li><a href="#">{{msg}}</a></li>
