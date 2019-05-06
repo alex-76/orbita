@@ -7,7 +7,7 @@
     <recent-posts-widget limit="5">Recent Posts</recent-posts-widget>
     <pages-widget limit="5">Pages</pages-widget>
 
-    <MyPage></MyPage>
+    <my-page></my-page>
   </div>
 </template>
 
