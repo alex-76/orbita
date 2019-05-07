@@ -20,8 +20,11 @@
   import SETTINGS from "../../settings";
 
   export default {
+
     name: 'VMyPage',
+
     props: [],
+
     data () {
         return {
             pages: [{
