@@ -47,6 +47,7 @@
                 console.log(error.response)
             });
 
+
         // Test Woocomerce API
         // https://local.wordpress.dev/wp-json/wc/v2/orders?consumer_key=XXXX&consumer_secret=XXXX
         //curl https://www.example.com/wp-json/wc/v3/orders?consumer_key=123&consumer_secret=abc
