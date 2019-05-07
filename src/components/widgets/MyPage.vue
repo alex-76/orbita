@@ -5,10 +5,20 @@
         {{item.title}}
       </li>
     </ul>
-    <a href="#" @click.prevent="addNew">New name</a>
-    <a href="#" @click.prevent="addNote">New note</a>
-    <p>{{name}}</p>
+    <a href="#" @click.prevent="addNew">add Name</a>
+    <a href="#" @click.prevent="addNote">add Note</a>
+    <p>mapGetters: {{name}}</p>
+    <p>getName: {{getName}}</p>
     <p>{{notes.text}}</p>
+    <hr>
+    <ul>
+      <li v-for="item in notes">
+        Page: {{ item }}
+      </li>
+    </ul>
+    <hr>
+    <h5>Go: {{doneGo}}</h5>
+
   </div>
 </template>
 
@@ -18,6 +28,8 @@
   //import api from "../../api/index";
   import axios from "axios";
   import SETTINGS from "../../settings";
+  import { mapGetters } from "vuex";
+  //import { mapState } from "vuex";
 
   export default {
 
@@ -32,22 +44,41 @@
             }]
         }
     },
+
     computed: {
-      name() {
+
+      getName() {
         return this.$store.getters.name;
       },
+
       notes() {
         return this.$store.getters.notes;
-      }
+      },
+
+      ...mapGetters({
+          name: "name",
+          notes: "notes",
+      }),
+
+//      ...mapState([
+//            'name',
+//            'goman'
+//        ]),
+
+        doneGo() {
+            return this.$store.getters.name;
+        }
     },
+
     methods: {
       addNew() {
         this.$store.dispatch('addName', 'New name Alex');
       },
       addNote() {
-        this.$store.dispatch('addNote', {text : 'New notes!!!'});
+        this.$store.dispatch('addNote', 'New notes!!!');
       }
     },
+
     created:function () {
 
         let self = this;

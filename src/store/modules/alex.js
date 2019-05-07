@@ -5,8 +5,9 @@ import * as types from "../mutation-types";
 
 
 const state = {
-    notes: [],
-    name:''
+    notes: ['Goga fun'],
+    name: 'Lola',
+    goman: 'Go to home...'
 };
 
 const actions = {
@@ -23,7 +24,7 @@ const mutations = {
         state.name = name;
     },
     ADD_NOTE(state, note) {
-        state.notes =  note;
+        state.notes.push(note);
     }
 };
 
