@@ -5,6 +5,10 @@
         {{item.title}}
       </li>
     </ul>
+    <a href="#" @click.prevent="addNew">New name</a>
+    <a href="#" @click.prevent="addNote">New note</a>
+    <p>{{name}}</p>
+    <p>{{notes.text}}</p>
   </div>
 </template>
 
@@ -16,14 +20,33 @@
   import SETTINGS from "../../settings";
 
   export default {
+
     name: 'VMyPage',
+
     props: [],
+
     data () {
         return {
             pages: [{
                 title:'Alex'
             }]
         }
+    },
+    computed: {
+      name() {
+        return this.$store.getters.name;
+      },
+      notes() {
+        return this.$store.getters.notes;
+      }
+    },
+    methods: {
+      addNew() {
+        this.$store.dispatch('addName', 'New name Alex');
+      },
+      addNote() {
+        this.$store.dispatch('addNote', {text : 'New notes!!!'});
+      }
     },
     created:function () {
 
@@ -34,8 +57,8 @@
 
                 for(let i = 0; i < response.data.length; i++) {
 
-                    console.log(response.data[i].title.rendered);
-                    console.log(response.data[i].id);
+                    //console.log(response.data[i].title.rendered);
+                    //console.log(response.data[i].id);
 
                     self.pages.push({
                         title : response.data[i].title.rendered,
@@ -61,12 +84,10 @@
 //                console.log(error.response)
 //            });
 
-
-
-
         console.log('created');
       
     },
+
     mounted:function () {
 
       console.log('mounted:');
