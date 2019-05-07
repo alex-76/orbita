@@ -9,6 +9,8 @@ import post from './modules/post'
 import page from './modules/page'
 import categories from './modules/categories'
 
+import alex from './modules/alex'
+
 Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
@@ -27,7 +29,8 @@ export default new Vuex.Store({
     user,
     post,
     page,
-    categories
+    categories,
+    alex
   },
   strict: debug,
   plugins: [localStorage]
