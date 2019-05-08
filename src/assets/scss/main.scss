@@ -5,29 +5,11 @@
 @import "components/_header";
 @import "components/_footer";
 
-body {
-  background: #ffffff;
-  color: #1d7914;
-  font-size: 16px;
-  font-family: Tahoma;
-  border: none;
-  margin-top: 15px;
 
-  h3 {
-    span {
-      color: #801d34;
-    }
-  }
-  p {
-    font-size: 16px;
-    color: #41c6ff;
-  }
-}
 
 /*** Animation ***/
 .page-transition-enter-active {
   transition: opacity 1s ease-out;
-  color: #16994d;
 }
 .page-transition-enter, .page-transition-leave-to  {
   opacity: 0;
