@@ -15,7 +15,7 @@ Vue.use(Vuex);
 const debug = process.env.NODE_ENV !== 'production'
 
 let localStorage = createPersist({
-    namespace: 'YOUR_APP_NAMESPACE',
+    namespace: 'MY_APP_TEST',
     initialState: {},
     expires: 1.21e+9 // Two Weeks
 });

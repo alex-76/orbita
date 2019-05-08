@@ -3,6 +3,7 @@ import axios from "axios";
 import SETTINGS from "../settings";
 
 export default {
+
   getCategories(cb) {
     axios
       .get(
@@ -53,5 +54,20 @@ export default {
       .catch(e => {
         cb(e);
       });
+  },
+
+  // Test my api
+  getAPage(cb) { //cb = function(pages) { commit(types.STORE_FETCHED_PAGES, { pages }); };
+    axios
+        .get(SETTINGS.API_BASE_PATH + "pages?per_page=5")
+        .then(response => {
+          cb(response.data);
+          console.log(response.data);
+        })
+        .catch(e => {
+          cb(e);
+        });
+
   }
+
 };

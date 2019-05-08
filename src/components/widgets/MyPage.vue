@@ -9,9 +9,11 @@
     <a href="#" @click.prevent="addNew">add Name</a>
     <a href="#" @click.prevent="addNote">add Note</a>
     <a href="#" @click.prevent="addNameY('Vasa')">AddNameY</a>
+    <a href="#" @click.prevent="getAPages('Page A')">getAPages</a>
     <p>mapGetters: {{name}}</p>
     <p>getName: {{getName}}</p>
     <p>{{notes.text}}</p>
+    <p>{{hooks}}</p>
     <hr>
     <ul>
       <li v-for="item in notes">
@@ -31,8 +33,6 @@
   import axios from "axios";
   import SETTINGS from "../../settings";
   import { mapGetters, mapState, mapActions } from "vuex";
-  //import { mapState } from "vuex";
-  //import { mapActions } from 'vuex'
 
   export default {
 
@@ -61,12 +61,8 @@
       ...mapGetters({
           name: "name",
           notes: "notes",
+          hooks: "getHooks"
       }),
-
-//      ...mapState([
-//            'name',
-//            'goman'
-//        ]),
 
         doneGo() {
             return this.$store.getters.name;
@@ -82,7 +78,8 @@
         this.$store.dispatch('addNote', 'New notes!!!');
       },
       ...mapActions([
-            'addNameY'
+            'addNameY',
+            'getAPages'
           ]
       )
     },
@@ -126,11 +123,7 @@
       
     },
 
-    mounted:function () {
-
-      console.log('mounted:');
-
-    }
+    mounted:function () {}
       
   }
 
