@@ -9,7 +9,7 @@
     <a href="#" @click.prevent="addNew">add Name</a>
     <a href="#" @click.prevent="addNote">add Note</a>
     <a href="#" @click.prevent="addNameY('Vasa')">AddNameY</a>
-    <a href="#" @click.prevent="getAPages('Page A')">getAPages</a>
+    <a href="#" @click.prevent="getAPages">getAPages</a>
     <p>mapGetters: {{name}}</p>
     <p>getName: {{getName}}</p>
     <p>{{notes.text}}</p>
@@ -32,7 +32,7 @@
   //import api from "../../api/index";
   import axios from "axios";
   import SETTINGS from "../../settings";
-  import { mapGetters, mapState, mapActions } from "vuex";
+  import { mapGetters, mapActions } from "vuex";
 
   export default {
 
@@ -92,9 +92,6 @@
             .then( function (response) {
 
                 for(let i = 0; i < response.data.length; i++) {
-
-                    //console.log(response.data[i].title.rendered);
-                    //console.log(response.data[i].id);
 
                     self.pages.push({
                         title : response.data[i].title.rendered,

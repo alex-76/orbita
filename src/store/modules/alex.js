@@ -35,7 +35,6 @@ const actions = {
             //         return hero.franchise == 'Marvel';
             //     });
 
-
             let cont = pages.filter( (s) => s.id === 184 );
 
             commit('ADD_MY_PAGE', { cont });
