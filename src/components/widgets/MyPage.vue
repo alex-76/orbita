@@ -5,8 +5,10 @@
         {{item.title}}
       </li>
     </ul>
+    <h4>My test block...</h4>
     <a href="#" @click.prevent="addNew">add Name</a>
     <a href="#" @click.prevent="addNote">add Note</a>
+    <a href="#" @click.prevent="addNameY('Vasa')">AddNameY</a>
     <p>mapGetters: {{name}}</p>
     <p>getName: {{getName}}</p>
     <p>{{notes.text}}</p>
@@ -28,8 +30,9 @@
   //import api from "../../api/index";
   import axios from "axios";
   import SETTINGS from "../../settings";
-  import { mapGetters } from "vuex";
+  import { mapGetters, mapState, mapActions } from "vuex";
   //import { mapState } from "vuex";
+  //import { mapActions } from 'vuex'
 
   export default {
 
@@ -71,12 +74,17 @@
     },
 
     methods: {
+
       addNew() {
         this.$store.dispatch('addName', 'New name Alex');
       },
       addNote() {
         this.$store.dispatch('addNote', 'New notes!!!');
-      }
+      },
+      ...mapActions([
+            'addNameY'
+          ]
+      )
     },
 
     created:function () {

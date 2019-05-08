@@ -11,6 +11,7 @@ const state = {
 };
 
 const actions = {
+    addNameY: ({ commit }, name) => commit('ADD_NAME', name),
     addName({commit}, name) {
         commit('ADD_NAME', name);
     },
