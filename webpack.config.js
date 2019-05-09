@@ -102,8 +102,19 @@ module.exports = {
             name: "fonts/[name].[ext]"
           }
         }
+      },
+      {
+        test: /\.json$/,
+        use: {
+          loader: 'json-loader'
+        }
       }
     ]
+  },
+  node: {
+    fs:  'empty',
+    net: 'empty',
+    tls: 'empty'
   },
   resolve: {
     alias: {

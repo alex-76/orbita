@@ -39,6 +39,6 @@
 
 <style scoped lang="scss">
   /*nav {
-    border: 1px solid #0e6dcd;
+    background: none !important;
   }*/
 </style>

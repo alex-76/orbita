@@ -1,5 +1,8 @@
 header {
-    background: #ffffff;
+    background: rgba(51, 46, 255, 0.29);
     color: #292929;
     border: none;
+    .uk-navbar-container:not(.uk-navbar-transparent) {
+        background: none;
+    }
 }

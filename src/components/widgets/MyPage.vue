@@ -22,6 +22,8 @@
     </ul>
     <hr>
     <h5>Go: {{doneGo}}</h5>
+    <hr>
+    <a href="#" @click="apiWC">Test Api WC</a>
 
   </div>
 </template>
@@ -81,7 +83,28 @@
             'addNameY',
             'getAPages'
           ]
-      )
+      ),
+
+      apiWC() {
+
+
+        // const ck = "ck_c17e5a4273eef3bc84d970c14edc6468f2b873d1";
+        // //const ck = "ck_c17e5a4273eef3bc84d970c14edc6468f2b873d1";
+        // let timestamp = new Date().getTime();
+        //
+        // axios.get(SETTINGS.API_BASE_WC_PATH + "products?oauth_consumer_key="+ck+"&oauth_signature_method=HMAC-SHA1&oauth_timestamp="+timestamp+"&oauth_nonce=iIZkksbSo35&oauth_version=1.0&oauth_signature=%2F7XPZzpUlCu%2BMweeuGaEHApqVOE%3D")
+        //         .then( function (response) {
+        //
+        //           console.log(response);
+        //
+        //
+        //         })
+        //         .catch( function (error) {
+        //           console.log(error.response)
+        //         });
+
+
+      }
     },
 
     created:function () {
