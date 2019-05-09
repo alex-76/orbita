@@ -1,6 +1,7 @@
 import _ from "lodash";
 import axios from "axios";
 import SETTINGS from "../settings";
+import WooCommerceAPI from "woocommerce-api";
 
 export default {
 
@@ -67,6 +68,19 @@ export default {
         .catch(e => {
           cb(e);
         });
+
+  },
+  // Get products WC
+  getListProducts(cb) {
+      new WooCommerceAPI({
+          url: SETTINGS.WC.URL_RESOURSE,
+          consumerKey: SETTINGS.WC.CONSUMERKEY,
+          consumerSecret: SETTINGS.WC.CONSUMERSECRET,
+          wpAPI: true,
+          version: 'wc/v3'
+      }).getAsync('products').then(function(response) {
+          cb(JSON.parse(response.toJSON().body));
+      });
 
   }
 

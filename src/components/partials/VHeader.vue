@@ -9,7 +9,7 @@
             <router-link class="nav-link" to="/">Home</router-link>
           </li>
           <li>
-            <router-link :to="{name: 'Page', params: {pageSlug: 'my-page'}}"
+            <router-link :to="{name: 'Page', params: {pageSlug: 'my-home-page'}}"
                          class="nav-link">Pages
             </router-link>
           </li>

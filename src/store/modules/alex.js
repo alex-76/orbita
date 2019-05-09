@@ -6,7 +6,8 @@ const state = {
     notes: ['Goga fun'],
     name: 'Lola',
     goman: 'Go to home...',
-    hooks:[]
+    hooks:[],
+    listprod:{}
 };
 
 const actions = {
@@ -22,7 +23,7 @@ const actions = {
     //getAPages: ({ commit }, data) => commit('ADD_MY_PAGE', data)
 
     getAPages({ commit }) {
-        api.getAPage(pages => {
+        api.getAPage( pages => {
 
             //     var heroes = [
             //     {name: “Batman”, franchise: “DC”},
@@ -35,9 +36,19 @@ const actions = {
             //         return hero.franchise == 'Marvel';
             //     });
 
-            let cont = pages.filter( (s) => s.id === 184 );
+            let cont = pages.filter( (s) => s.id === 7 );
 
             commit('ADD_MY_PAGE', { cont });
+        });
+    },
+
+
+    getProducts({ commit}) {
+
+        api.getListProducts( data => {
+
+            commit('ADD_PRODUCTS', { data });
+
         });
     }
 };
@@ -51,6 +62,10 @@ const mutations = {
     },
     ADD_MY_PAGE(state, data) {
         state.hooks.push(data);
+    },
+    ADD_PRODUCTS(state, data) {
+        state.listprod = data;
+        console.log(state.listprod);
     }
 };
 
@@ -63,6 +78,9 @@ const getters = {
     },
     getHooks(state) {
         return state.hooks;
+    },
+    getMyProducts(state) {
+        return state.listprod;
     }
 };
 
