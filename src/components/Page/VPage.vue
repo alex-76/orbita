@@ -17,7 +17,7 @@ export default {
   name:'Page',
 
   metaInfo: {
-    title: 'About',
+    title: 'About', // Десь вытянуть Название страниы из хранилища!!!
     titleTemplate: '%s | WHA!',
     meta: [
       { vmid: 'description', name: 'description', content: 'Training' },
