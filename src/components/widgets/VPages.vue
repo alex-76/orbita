@@ -16,7 +16,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: 'Pages Widget',
+  name: 'PageWidget',
   props: ["limit"],
   computed: {
     ...mapGetters('page',{

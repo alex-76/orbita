@@ -15,7 +15,7 @@ import PagesWidget from "./widgets/VPages.vue";
 //import MyPage from "./widgets/MyPage.vue";
 
 export default {
-  name: 'Home Page',
+  name: 'HomePage',
   metaInfo: {
     title: 'Home Page WHA',
     titleTemplate: '%s | WHA!',

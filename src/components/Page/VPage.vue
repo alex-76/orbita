@@ -17,7 +17,7 @@ export default {
   name:'Page',
 
   metaInfo: {
-    title: 'About', // Десь вытянуть Название страниы из хранилища!!!
+    title: 'New Title',
     titleTemplate: '%s | WHA!',
     meta: [
       { vmid: 'description', name: 'description', content: 'Training' },
@@ -44,7 +44,8 @@ export default {
   },
   created() {
     this.$store.dispatch("page/getAllPages");
-  }
+  },
+  mounted(){}
 
 };
 </script>
