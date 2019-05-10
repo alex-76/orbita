@@ -38,8 +38,6 @@
 
 <script>
 
-  //import axios from "axios";
-  //import SETTINGS from "../../settings";
   import { mapGetters, mapActions } from "vuex";
 
   export default {
@@ -110,27 +108,7 @@
 
     },
 
-    created:function () {
-
-//        let self = this;
-//
-//        axios.get(SETTINGS.API_BASE_PATH + "pages?per_page=10")
-//            .then( function (response) {
-//
-//                for(let i = 0; i < response.data.length; i++) {
-//
-//                    self.pages.push({
-//                        title : response.data[i].title.rendered,
-//                        id : response.data[i].id
-//                    });
-//                }
-//            })
-//            .catch( function (error) {
-//                console.log(error.response)
-//            });
-
-      
-    },
+    created:function () {},
 
     mounted:function () {}
       

@@ -26,7 +26,7 @@ const actions = {
     //getAPages: ({ commit }, data) => commit('ADD_MY_PAGE', data)
 
     getAPages({ commit }) {
-        api.getAPage( pages => {
+        api.alex.getAPage( pages => {
 
             //     var heroes = [
             //     {name: “Batman”, franchise: “DC”},
@@ -47,7 +47,7 @@ const actions = {
 
     getProducts({ commit}) {
 
-        api.getListProducts( data => {
+        api.alex.getListProducts( data => {
 
             commit('ADD_PRODUCTS', { data });
 
