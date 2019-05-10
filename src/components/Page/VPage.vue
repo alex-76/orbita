@@ -13,6 +13,21 @@ import Loader from "../partials/Loader.vue";
 import { mapGetters } from "vuex";
 
 export default {
+
+  name:'Page',
+
+  metaInfo: {
+    title: 'About',
+    titleTemplate: '%s | WHA!',
+    meta: [
+      { vmid: 'description', name: 'description', content: 'Training' },
+      { vmid: 'keyword', name: 'keyword', content: 'Keyword VueJS' },
+    ],
+    htmlAttrs: {
+      lang: 'en'
+    }
+  },
+
   computed: {
     ...mapGetters('page',{
       page: "page",

@@ -16,6 +16,7 @@
 import { mapGetters } from "vuex";
 
 export default {
+  name: 'Post Widget',
   props: ["limit"],
   computed: {
     ...mapGetters('post',{

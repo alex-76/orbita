@@ -41,7 +41,7 @@ const actions = {
             //         return hero.franchise == 'Marvel';
             //     });
 
-            let cont = pages.filter( (s) => s.id === 184 );
+            let cont = pages.filter( (s) => s.id === 7 );
 
             commit('ADD_MY_PAGE', { cont });
         });

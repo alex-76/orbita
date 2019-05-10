@@ -15,6 +15,9 @@ import { mapGetters } from "vuex";
 import SETTINGS from "../../settings";
 
 export default {
+
+  name:'Post',
+
   data() {
     return {
       post: false

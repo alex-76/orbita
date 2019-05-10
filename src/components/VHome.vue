@@ -15,6 +15,19 @@ import PagesWidget from "./widgets/VPages.vue";
 //import MyPage from "./widgets/MyPage.vue";
 
 export default {
+  name: 'Home Page',
+  metaInfo: {
+    title: 'Home Page WHA',
+    titleTemplate: '%s | WHA!',
+    meta: [
+      { vmid: 'description', name: 'description', content: 'Training' },
+      { vmid: 'keyword', name: 'keyword', content: 'Keyword VueJS' },
+    ],
+    htmlAttrs: {
+      lang: 'en'
+    }
+  },
+
   components: {
     RecentPostsWidget,
     PagesWidget,

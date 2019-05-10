@@ -29,7 +29,7 @@ export default new Vuex.Store({
     post,
     page,
     categories,
-    alex
+    //alex
   },
   strict: debug,
   plugins: [localStorage]
