@@ -31,6 +31,8 @@
         Name: {{item.name}} ID: {{item.id}}
       </li>
     </ul>
+      <hr>
+      <a href="#" @click.prevent="resetState">Clear store</a>
 
   </div>
 </template>
@@ -38,7 +40,7 @@
 
 <script>
 
-  import { mapGetters, mapActions } from "vuex";
+  import { mapGetters, mapActions, mapMutations } from "vuex";
 
   export default {
 
@@ -93,6 +95,12 @@
 
     methods: {
 
+      logout () {
+        this.resetState() // <<---- use mutation
+        // ... any code if you need to do something here
+      },
+
+
       addNew() {
         this.$store.dispatch('alex/addName', 'New name Alex');
       },
@@ -102,7 +110,8 @@
       ...mapActions('alex',[
             'addNameY',
             'getAPages',
-            'getProducts'
+            'getProducts',
+            'resetState'
           ]
       ),
 

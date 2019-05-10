@@ -4,6 +4,8 @@ const namespaced = {
     namespaced: true
 };
 
+
+// Init state
 const state = {
     notes: ['Goga fun'],
     name: 'Lola',
@@ -52,7 +54,12 @@ const actions = {
             commit('ADD_PRODUCTS', { data });
 
         });
+    },
+
+    resetState({ commit }) {
+        commit('RESET_STATE');
     }
+
 };
 
 const mutations = {
@@ -67,8 +74,11 @@ const mutations = {
     },
     ADD_PRODUCTS(state, data) {
         state.listprod = data;
-        //console.log(state.listprod);
-    }
+    },
+    RESET_STATE(state) {
+        state.listprod = {};
+        state.notes = [];
+    },
 };
 
 const getters = {
