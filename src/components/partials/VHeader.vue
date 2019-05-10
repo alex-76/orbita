@@ -9,12 +9,15 @@
             <router-link class="nav-link" to="/">Home</router-link>
           </li>
           <li>
-            <router-link :to="{name: 'Page', params: {pageSlug: 'my-home-page'}}"
-                         class="nav-link">Pages
+            <router-link :to="{name: 'Page', params: {pageSlug: 'about'}}"
+                         class="nav-link">About
             </router-link>
           </li>
-          <li><a href="#">Posts</a></li>
-          <li><a href="#">{{msg}}</a></li>
+          <li>
+            <router-link :to="{name: 'Post', params: {postSlug: 'news'}}"
+                         class="nav-link">News
+            </router-link>
+          </li>
         </ul>
 
       </div>
@@ -29,9 +32,7 @@
     name: 'VHeader',
     props: [],
     data () {
-      return {
-        msg: 'Item example',
-      }
+      return {}
     },
     methods: {}
   }

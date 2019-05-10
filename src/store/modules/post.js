@@ -2,6 +2,10 @@ import api from "../../api";
 import _ from "lodash";
 import * as types from "../mutation-types";
 
+const namespaced = {
+  namespaced: true
+};
+
 const createPostSlug = post => {
   let slug = post.link.replace("http://" + window.location.hostname, "");
   slug = slug.replace("https://" + window.location.hostname, "");
@@ -36,14 +40,14 @@ const getters = {
 // actions
 const actions = {
   getPosts({ commit }, { limit }) {
-    api.getPosts(limit, posts => {
+    api.postsApi.getPosts(limit, posts => {
       posts.map((post, i) => {
         posts[i] = createPostSlug(post);
       });
 
       commit(types.STORE_FETCHED_POSTS, { posts });
       commit(types.POSTS_LOADED, true);
-      commit(types.INCREMENT_LOADING_PROGRESS);
+      //commit(types.INCREMENT_LOADING_PROGRESS);
     });
   }
 };
@@ -60,6 +64,7 @@ const mutations = {
 };
 
 export default {
+  namespaced,
   state,
   getters,
   actions,

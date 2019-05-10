@@ -14,7 +14,7 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters({
+    ...mapGetters('page',{
       page: "page",
       allPagesLoaded: "allPagesLoaded"
     }),
@@ -26,6 +26,10 @@ export default {
 
   components: {
     Loader
+  },
+  created() {
+    this.$store.dispatch("page/getAllPages");
   }
+
 };
 </script>

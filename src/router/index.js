@@ -17,16 +17,16 @@ const router = new Router({
       component: Home
     },
     {
-      // Assuming you're using the default permalink structure for posts
-      path: "/:year/:month/:day/:postSlug",
-      name: "Post",
-      component: Post
-    },
-    {
       path: "/:pageSlug",
       name: "Page",
       component: Page
-    }
+    },
+    {
+      path: "/:postSlug",
+      name: "Post",
+      component: Post
+    },
+
   ],
   mode: "history",
   base: "",

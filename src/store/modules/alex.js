@@ -78,6 +78,7 @@ const mutations = {
     RESET_STATE(state) {
         state.listprod = {};
         state.notes = [];
+        state.hooks = [];
     },
 };
 

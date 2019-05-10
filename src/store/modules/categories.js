@@ -17,10 +17,10 @@ const getters = {
 // actions
 const actions = {
   getAllCategories ({ commit }) {
-    api.getCategories(categories => {
+    api.categoriesAPI.getCategories(categories => {
       commit(types.STORE_FETCHED_CATEGORIES, { categories })
       commit(types.CATEGORIES_LOADED, true)
-      commit(types.INCREMENT_LOADING_PROGRESS)
+      //commit(types.INCREMENT_LOADING_PROGRESS)
     })
   }
 }

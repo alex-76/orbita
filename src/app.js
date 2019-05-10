@@ -21,8 +21,8 @@ new Vue({
   components: { App },
   template: '<App/>',
   created() {
-    this.$store.commit(types.RESET_LOADING_PROGRESS);
-    this.$store.dispatch("getAllCategories");
-    this.$store.dispatch("getAllPages");
+    //this.$store.commit(types.RESET_LOADING_PROGRESS);
+    //this.$store.dispatch("getAllCategories");
+    //this.$store.dispatch("page/getAllPages");
   }
 });

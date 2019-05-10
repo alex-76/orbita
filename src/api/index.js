@@ -5,7 +5,6 @@ import WooCommerceAPI from "woocommerce-api";
 
 
 const alex = {
-
     // Test my api
     getAPage(cb) { //cb = function(pages) { commit(types.STORE_FETCHED_PAGES, { pages }); };
         axios
@@ -19,7 +18,6 @@ const alex = {
             });
 
     },
-
     // Get products WC
     getListProducts(cb) {
         new WooCommerceAPI({
@@ -33,64 +31,85 @@ const alex = {
         });
 
     },
+};
+
+// API Pages
+const pagesApi = {
+
+    getPages(cb) {
+        axios
+            .get(SETTINGS.API_BASE_PATH + "pages?per_page=10")
+            .then(response => {
+                cb(response.data);
+            })
+            .catch(e => {
+                cb(e);
+            });
+    },
+
+    getPage(id, cb) {
+        if (_.isNull(id) || !_.isNumber(id)) return false;
+        axios
+            .get(SETTINGS.API_BASE_PATH + "pages/" + id)
+            .then(response => {
+                cb(response.data);
+            })
+            .catch(e => {
+                cb(e);
+            });
+    },
 
 };
+
+// API Posts
+const postsApi = {
+
+    getPosts(limit, cb) {
+
+        if (_.isEmpty(limit)) {
+            let limit = 5;
+        }
+
+        axios
+            .get(SETTINGS.API_BASE_PATH + "posts?per_page=" + limit)
+            .then(response => {
+                //console.log(response.data);
+                cb(response.data);
+            })
+            .catch(e => {
+                cb(e);
+            });
+    },
+};
+
+// API Categories
+const categoriesAPI = {
+
+    getCategories(cb) {
+        axios
+            .get(
+                SETTINGS.API_BASE_PATH +
+                "categories?sort=name&hide_empty=true&per_page=50"
+            )
+            .then(response => {
+                cb(response.data.filter(c => c.name !== "Uncategorized"));
+            })
+            .catch(e => {
+                cb(e);
+            });
+    },
+};
+
+// API Woocomerce
+const wcApi = {};
 
 
 export default {
 
-  getCategories(cb) {
-    axios
-      .get(
-        SETTINGS.API_BASE_PATH +
-          "categories?sort=name&hide_empty=true&per_page=50"
-      )
-      .then(response => {
-        cb(response.data.filter(c => c.name !== "Uncategorized"));
-      })
-      .catch(e => {
-        cb(e);
-      });
-  },
-
-  getPages(cb) {
-    axios
-      .get(SETTINGS.API_BASE_PATH + "pages?per_page=10")
-      .then(response => {
-        cb(response.data);
-      })
-      .catch(e => {
-        cb(e);
-      });
-  },
-
-  getPage(id, cb) {
-    if (_.isNull(id) || !_.isNumber(id)) return false;
-    axios
-      .get(SETTINGS.API_BASE_PATH + "pages/" + id)
-      .then(response => {
-        cb(response.data);
-      })
-      .catch(e => {
-        cb(e);
-      });
-  },
-
-  getPosts(limit, cb) {
-    if (_.isEmpty(limit)) {
-      let limit = 5;
-    }
-
-    axios
-      .get(SETTINGS.API_BASE_PATH + "posts?per_page=" + limit)
-      .then(response => {
-        cb(response.data);
-      })
-      .catch(e => {
-        cb(e);
-      });
-  },
-
-  alex
+  alex,
+  pagesApi,
+  postsApi,
+  categoriesAPI,
+  wcApi
 
 };

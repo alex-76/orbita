@@ -5,7 +5,7 @@
     </h3>
     <ul v-if="allPagesLoaded">
       <li v-for="page in somePages(limit)" :key="page.id">
-        <router-link :to="page.slug">{{ page.title.rendered }}</router-link>
+        <router-link :to="{name: 'Page', params: {pageSlug: page.slug}}">{{ page.title.rendered }}</router-link>
       </li>
     </ul>
     <div v-else>Loading...</div>
@@ -18,12 +18,14 @@ import { mapGetters } from "vuex";
 export default {
   props: ["limit"],
   computed: {
-    ...mapGetters({
+    ...mapGetters('page',{
       somePages: "somePages",
       allPagesLoaded: "allPagesLoaded"
     })
   },
 
-  mounted() {}
+  mounted() {
+    this.$store.dispatch("page/getAllPages");
+  }
 };
 </script>
