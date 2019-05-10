@@ -1,6 +1,8 @@
 import api from "../../api";
-import * as types from "../mutation-types";
 
+const namespaced = {
+    namespaced: true
+};
 
 const state = {
     notes: ['Goga fun'],
@@ -16,6 +18,7 @@ const actions = {
     addName({commit}, name) {
         commit('ADD_NAME', name);
     },
+
     addNote({commit}, note) {
         commit('ADD_NOTE', note);
     },
@@ -36,12 +39,11 @@ const actions = {
             //         return hero.franchise == 'Marvel';
             //     });
 
-            let cont = pages.filter( (s) => s.id === 7 );
+            let cont = pages.filter( (s) => s.id === 184 );
 
             commit('ADD_MY_PAGE', { cont });
         });
     },
-
 
     getProducts({ commit}) {
 
@@ -65,7 +67,7 @@ const mutations = {
     },
     ADD_PRODUCTS(state, data) {
         state.listprod = data;
-        console.log(state.listprod);
+        //console.log(state.listprod);
     }
 };
 
@@ -81,10 +83,15 @@ const getters = {
     },
     getMyProducts(state) {
         return state.listprod;
+    },
+    getGo(state) {
+        return state.goman;
     }
+
 };
 
 export default {
+    namespaced,
     state,
     getters,
     actions,

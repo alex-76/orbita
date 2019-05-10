@@ -48,6 +48,18 @@
 
     props: [],
 
+    metaInfo: {
+      title: 'Training Math',
+      titleTemplate: '%s | WHA!',
+      meta: [
+        { vmid: 'description', name: 'description', content: 'Training' },
+        { vmid: 'keyword', name: 'keyword', content: 'Keyword VueJS' },
+      ],
+      htmlAttrs: {
+        lang: 'en'
+      }
+    },
+
     data () {
         return {
             pages: [{
@@ -59,42 +71,43 @@
     computed: {
 
       getName() {
-        return this.$store.getters.name;
+        return this.$store.getters['alex/name'];
       },
 
       notes() {
-        return this.$store.getters.notes;
+        return this.$store.getters['alex/notes'];
       },
 
-      ...mapGetters({
+      ...mapGetters('alex',{
           name: "name",
           notes: "notes",
           hooks: "getHooks"
       }),
 
       listProducts() {
-          return this.$store.getters.getMyProducts.data;
+          return this.$store.getters['alex/getMyProducts'].data;
       },
 
       doneGo() {
-            return this.$store.getters.getGo;
+            return this.$store.getters['alex/getGo'];
         }
     },
 
     methods: {
 
       addNew() {
-        this.$store.dispatch('addName', 'New name Alex');
+        this.$store.dispatch('alex/addName', 'New name Alex');
       },
       addNote() {
-        this.$store.dispatch('addNote', 'New notes!!!');
+        this.$store.dispatch('alex/addNote', 'New notes!!!');
       },
-      ...mapActions([
+      ...mapActions('alex',[
             'addNameY',
             'getAPages',
             'getProducts'
           ]
       ),
+
     },
 
     created:function () {

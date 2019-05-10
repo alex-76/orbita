@@ -5,10 +5,12 @@ import router from "./router";
 import App from "./App.vue";
 import store from "./store";
 import * as types from "./store/mutation-types";
+import Meta from 'vue-meta'
 
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 UIkit.use(Icons);
+Vue.use(Meta);
 
 import './assets/scss/main.scss';
 
