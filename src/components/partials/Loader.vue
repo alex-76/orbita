@@ -1,14 +1,15 @@
 <template>
-  <div class="loader">Loading... <img :src="src" /></div>
+  <div class="loader"><img :src="src" /></div>
 </template>
 <script>
 
-  import img from "../../assets/loader.gif"
+  import SETTINGS from "../../settings";
+  import loader from "../../assets/loader.gif"
 
   export default {
     data () {
       return {
-        src: '/wp-content/themes/_customthema/dist/'+img
+        src: SETTINGS.THEME_DIR_PATH + loader
       }
     },
   }

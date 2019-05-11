@@ -41,13 +41,14 @@ const getters = {
     let all = [...state.all];
     return all.splice(0, Math.min(limit, state.all.length));
   },
-  pageTitle: state => id => {
 
-      let field = typeof id === "number" ? "id" : "slug";
-      let page = state.all.filter(page => page[field] === id);
-      return page[0].title.rendered;
-
-  }
+  // pageTitle: state => id => {
+  //
+  //     let field = typeof id === "number" ? "id" : "slug";
+  //     let page = state.all.filter(page => page[field] === id);
+  //     return page[0].title.rendered;
+  //
+  // }
 
 };
 

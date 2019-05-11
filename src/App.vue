@@ -21,11 +21,13 @@ import Footer from "./components/partials/VFooter.vue";
 //import ProgressBar from "./components/partials/VProgressBar.vue";
 
 export default {
+
   data() {
     return {
       //showLoader: true
     };
   },
+
   computed: {
     // ...mapGetters({
     //   isLoading: "isLoading",

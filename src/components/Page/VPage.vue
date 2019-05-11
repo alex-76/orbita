@@ -16,17 +16,16 @@ export default {
 
   name:'Page',
 
-  metaInfo: {
-    title: 'New Title',
-    titleTemplate: '%s | WHA!',
-    meta: [
-      { vmid: 'description', name: 'description', content: 'Training' },
-      { vmid: 'keyword', name: 'keyword', content: 'Keyword VueJS' },
-    ],
-    htmlAttrs: {
-      lang: 'en'
-    }
-  },
+  components: { Loader },
+
+   metaInfo() {
+        return {
+            title: this.pageContent.title.rendered,
+            meta: [
+                { vmid: 'description', name: 'description', content: 'Description example' }
+            ]
+        }
+   },
 
   computed: {
     ...mapGetters('page',{
@@ -39,12 +38,11 @@ export default {
     }
   },
 
-  components: {
-    Loader
-  },
   created() {
     this.$store.dispatch("page/getAllPages");
+
   },
+
   mounted(){}
 
 };

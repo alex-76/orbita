@@ -1,9 +1,9 @@
 <template>
-  <div class="widget recent-posts">
+  <div class="uk-margin-right widget recent-posts">
     <h3>
       <slot></slot>
     </h3>
-    <ul v-if="recentPostsLoaded">
+    <ul class="uk-list" v-if="recentPostsLoaded">
       <li v-for="post in recentPosts(limit)" :key="post.id">
         <router-link :to="{name: 'Post', params: {postSlug: post.slug}}">{{ post.title.rendered }}</router-link>
       </li>

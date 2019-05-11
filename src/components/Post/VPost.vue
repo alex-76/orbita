@@ -9,44 +9,56 @@
 </template>
 
 <script>
-import axios from "axios";
-import Loader from "../partials/Loader.vue";
-import { mapGetters } from "vuex";
-import SETTINGS from "../../settings";
+    import axios from "axios";
+    import Loader from "../partials/Loader.vue";
+    import { mapGetters } from "vuex";
+    import SETTINGS from "../../settings";
 
-export default {
+    export default {
 
-  name:'Post',
+        name:'Post',
 
-  data() {
-    return {
-      post: false
+        components: {  Loader },
+
+        data() {
+            return {
+                post: false
+            };
+        },
+
+        metaInfo() {
+            return {
+                title: 'Root',
+                meta: [
+                    { vmid: 'description', name: 'description', content: 'Description example' }
+                ]
+            }
+        },
+
+        computed: {},
+
+        beforeMount() {
+            this.getPost();
+        },
+
+        methods: {
+            getPost: function() {
+                axios
+                    .get(
+                        SETTINGS.API_BASE_PATH + "posts?slug=" + this.$route.params.postSlug
+                    )
+                    .then(response => {
+                        this.post = response.data[0];
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+            }
+        },
+
+        created(){},
+
+        mounted(){}
+
     };
-  },
-
-  computed: {},
-
-  beforeMount() {
-    this.getPost();
-  },
-
-  methods: {
-    getPost: function() {
-      axios
-        .get(
-          SETTINGS.API_BASE_PATH + "posts?slug=" + this.$route.params.postSlug
-        )
-        .then(response => {
-          this.post = response.data[0];
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    }
-  },
-
-  components: {
-    Loader
-  }
-};
 </script>
