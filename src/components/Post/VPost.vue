@@ -22,20 +22,19 @@
 
         data() {
             return {
-                post: false
+                post: false,
+                title:''
             };
         },
 
         metaInfo() {
             return {
-                title: 'Root',
+                title: this.title,
                 meta: [
                     { vmid: 'description', name: 'description', content: 'Description example' }
                 ]
             }
         },
-
-        computed: {},
 
         beforeMount() {
             this.getPost();
@@ -49,16 +48,12 @@
                     )
                     .then(response => {
                         this.post = response.data[0];
+                        this.title = this.post.title.rendered;
                     })
                     .catch(e => {
                         console.log(e);
                     });
             }
-        },
-
-        created(){},
-
-        mounted(){}
-
+        }
     };
 </script>

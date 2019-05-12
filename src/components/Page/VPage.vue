@@ -38,12 +38,5 @@ export default {
     }
   },
 
-  created() {
-    this.$store.dispatch("page/getAllPages");
-
-  },
-
-  mounted(){}
-
 };
 </script>

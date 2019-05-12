@@ -4,6 +4,12 @@
 
     <p>You'll probably want to remove all of this stuff, but hey it at least it works!</p>
 
+
+    <template v-if="allPagesLoaded">
+      <div v-html="pageContent"></div>
+    </template>
+    <Loader v-else/>
+
     <div class="uk-flex uk-flex-left uk-flex-top section-widgets">
 
       <pages-widget limit="5">Pages</pages-widget>
@@ -12,15 +18,15 @@
 
     </div>
 
-    <!--<my-page></my-page>-->
   </div>
 </template>
 
 <script>
-import RecentPostsWidget from "./widgets/VRecentPosts.vue";
-import PagesWidget from "./widgets/VPages.vue";
+import  RecentPostsWidget from "./widgets/VWRecentPosts.vue";
+import PagesWidget from "./widgets/VWPages.vue";
+import { mapGetters } from "vuex";
+import Loader from "./partials/Loader.vue";
 
-//import MyPage from "./widgets/MyPage.vue";
 
 export default {
 
@@ -41,7 +47,26 @@ export default {
   components: {
     RecentPostsWidget,
     PagesWidget,
-    //MyPage
-  }
+    Loader
+  },
+
+  computed: {
+      ...mapGetters('page',{
+          page: "page",
+          allPagesLoaded: "allPagesLoaded"
+      }),
+
+      pageContent() {
+          return '<b>Text...</b>';
+      }
+  },
+
+
+
+
+
+
+
+
 };
 </script>

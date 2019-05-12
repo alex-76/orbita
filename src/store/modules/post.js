@@ -6,12 +6,12 @@ const namespaced = {
   namespaced: true
 };
 
-const createPostSlug = post => {
-  let slug = post.link.replace("http://" + window.location.hostname, "");
-  slug = slug.replace("https://" + window.location.hostname, "");
-  post.slug = slug;
-  return post;
-};
+// const createPostSlug = post => {
+//   let slug = post.link.replace("http://" + window.location.hostname, "");
+//   slug = slug.replace("https://" + window.location.hostname, "");
+//   post.slug = slug;
+//   return post;
+// };
 
 // initial state
 const state = {
@@ -41,9 +41,9 @@ const getters = {
 const actions = {
   getPosts({ commit }, { limit }) {
     api.postsApi.getPosts(limit, posts => {
-      posts.map((post, i) => {
-        posts[i] = createPostSlug(post);
-      });
+      // posts.map((post, i) => {
+      //   posts[i] = createPostSlug(post);
+      // });
 
       commit(types.STORE_FETCHED_POSTS, { posts });
       commit(types.POSTS_LOADED, true);
@@ -57,7 +57,6 @@ const mutations = {
   [types.STORE_FETCHED_POSTS](state, { posts }) {
     state.recent = posts;
   },
-
   [types.POSTS_LOADED](state, val) {
     state.loaded = val;
   }

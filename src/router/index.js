@@ -22,11 +22,10 @@ const router = new Router({
       component: Page
     },
     {
-      path: "/:postSlug",
+      path: "/:postID/:postSlug",
       name: "Post",
       component: Post
-    },
-
+    }
   ],
   mode: "history",
   base: "",

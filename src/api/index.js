@@ -103,7 +103,6 @@ const categoriesAPI = {
 // API Woocomerce
 const wcApi = {};
 
-
 export default {
 
   alex,

@@ -5,7 +5,12 @@
     </h3>
     <ul class="uk-list" v-if="recentPostsLoaded">
       <li v-for="post in recentPosts(limit)" :key="post.id">
-        <router-link :to="{name: 'Post', params: {postSlug: post.slug}}">{{ post.title.rendered }}</router-link>
+        <router-link :to="{
+            name: 'Post',
+            params: {
+               postSlug: post.slug,
+               postID: post.id
+            }}">{{ post.title.rendered }}</router-link>
       </li>
     </ul>
     <div v-else>Loading...</div>
@@ -16,8 +21,11 @@
 import { mapGetters } from "vuex";
 
 export default {
+
   name: 'PostWidget',
+
   props: ["limit"],
+
   computed: {
     ...mapGetters('post',{
       recentPosts: "recentPosts",

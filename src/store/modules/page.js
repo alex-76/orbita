@@ -33,7 +33,7 @@ const getters = {
       ? _.first(page).content.rendered
       : false;
   },
-
+  //Use Widget VWPages
   somePages: state => limit => {
     if (state.all.length < 1) {
       return false;
