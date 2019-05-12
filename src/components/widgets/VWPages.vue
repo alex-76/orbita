@@ -8,7 +8,7 @@
         <router-link :to="{name: 'Page', params: {pageSlug: page.slug}}">{{ page.title.rendered }}</router-link>
       </li>
     </ul>
-    <div v-else>Loading...</div>
+    <div v-else></div>
   </div>
 </template>
 
@@ -24,9 +24,5 @@ export default {
       allPagesLoaded: "allPagesLoaded"
     })
   },
-
-  mounted() {
-    this.$store.dispatch("page/getAllPages");
-  }
 };
 </script>

@@ -4,7 +4,6 @@ import Vue from "vue";
 import router from "./router";
 import App from "./App.vue";
 import store from "./store";
-import * as types from "./store/mutation-types";
 import Meta from 'vue-meta'
 
 import UIkit from 'uikit';
@@ -21,8 +20,7 @@ new Vue({
   components: { App },
   template: '<App/>',
   created() {
-    //this.$store.commit(types.RESET_LOADING_PROGRESS);
-    //this.$store.dispatch("getAllCategories");
+    this.$store.dispatch("getAllCategories");
     this.$store.dispatch("page/getAllPages");
   }
 });

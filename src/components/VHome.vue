@@ -6,7 +6,9 @@
 
 
     <template v-if="allPagesLoaded">
+
       <div v-html="pageContent"></div>
+
     </template>
     <Loader v-else/>
 

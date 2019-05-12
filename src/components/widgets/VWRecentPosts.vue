@@ -13,7 +13,7 @@
             }}">{{ post.title.rendered }}</router-link>
       </li>
     </ul>
-    <div v-else>Loading...</div>
+    <div v-else></div>
   </div>
 </template>
 
