@@ -5,10 +5,11 @@ import * as actions from './actions'
 import * as getters from './getters'
 import post from './modules/post'
 import page from './modules/page'
+import shop from './modules/shop'
 
 Vue.use(Vuex);
 
-const debug = process.env.NODE_ENV !== 'production'
+const debug = process.env.NODE_ENV !== 'production';
 
 let localStorage = createPersist({
     namespace: 'APP_WHA',
@@ -22,6 +23,7 @@ export default new Vuex.Store({
   modules: {
     post,
     page,
+    shop
   },
   strict: debug,
   plugins: [localStorage]

@@ -6,6 +6,7 @@ import Router from "vue-router";
 import Home from "../components/VHome.vue";
 import Post from "../components/Post/VPost.vue";
 import Page from "../components/Page/VPage.vue";
+import Shop from "../components/WC/Shop/VShop.vue";
 
 Vue.use(Router);
 
@@ -19,13 +20,21 @@ const router = new Router({
     {
       path: "/:pageSlug",
       name: "Page",
-      component: Page
+      component: Page,
+      props: true
     },
     {
       path: "/:postID/:postSlug",
       name: "Post",
-      component: Post
+      component: Post,
+      props: true
+    },
+    {
+      path: "/:pageSlug",
+      name: "Shop",
+      component: Shop,
     }
+
   ],
   mode: "history",
   base: "",
@@ -55,6 +64,7 @@ router.afterEach((to, from) => {
   const slug = _.isEmpty(to.params.postSlug)
     ? to.params.pageSlug
     : to.params.postSlug;
+
   body.classList.add("vue--page--" + slug);
 });
 

@@ -101,7 +101,21 @@ const categoriesAPI = {
 };
 
 // API Woocomerce
-const wcApi = {};
+const wcApi = {
+
+    // Get all products
+    getProducts(cb) {
+    new WooCommerceAPI({
+        url: SETTINGS.WC.URL_RESOURSE,
+        consumerKey: SETTINGS.WC.CONSUMERKEY,
+        consumerSecret: SETTINGS.WC.CONSUMERSECRET,
+        wpAPI: true,
+        version: 'wc/v3'
+    }).getAsync('products').then(function(response) {
+        cb(JSON.parse(response.toJSON().body));
+    })}
+
+};
 
 export default {
   pagesApi,

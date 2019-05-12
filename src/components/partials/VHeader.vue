@@ -18,6 +18,8 @@
                          class="nav-link">News
             </router-link>
           </li>
+          <li>
+              <router-link :to="{name: 'Shop', params: {pageSlug: 'shop'}}" class="nav-link">Shop</router-link></li>
         </ul>
 
       </div>
