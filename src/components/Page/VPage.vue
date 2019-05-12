@@ -37,6 +37,9 @@ export default {
       return this.page(this.$route.params.pageSlug);
     }
   },
+    created() {
+        this.$store.dispatch("page/getAllPages");
+    }
 
 };
 </script>

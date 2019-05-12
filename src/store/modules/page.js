@@ -8,7 +8,7 @@ const namespaced = {
 
 // initial state
 const state = {
-  all: [],
+  allPages: [],
   loaded: false,
   page: null
 };
@@ -16,39 +16,38 @@ const state = {
 // getters
 const getters = {
 
-  allPages: state => state.all,
+  allPages: state => state.allPages,
 
   allPagesLoaded: state => state.loaded,
 
   page: state => id => {
     let field = typeof id === "number" ? "id" : "slug";
-    let page = state.all.filter(page => page[field] === id);
+    let page = state.allPages.filter(page => page[field] === id);
     return !_.isNull(_.first(page)) ? _.first(page) : false;
   },
 
   pageContent: state => id => {
     let field = typeof id === "number" ? "id" : "slug";
-    let page = state.all.filter(page => page[field] === id);
+    let page = state.allPages.filter(page => page[field] === id);
     return !_.isNull(_.first(page).content.rendered)
       ? _.first(page).content.rendered
       : false;
   },
   //Use Widget VWPages
   somePages: state => limit => {
-    if (state.all.length < 1) {
+    if (state.allPages.length < 1) {
       return false;
     }
-    let all = [...state.all];
-    return all.splice(0, Math.min(limit, state.all.length));
+    let all = [...state.allPages];
+    return all.splice(0, Math.min(limit, state.allPages.length));
   },
 
-  // pageTitle: state => id => {
-  //
-  //     let field = typeof id === "number" ? "id" : "slug";
-  //     let page = state.all.filter(page => page[field] === id);
-  //     return page[0].title.rendered;
-  //
-  // }
+  pageContentHome: function(state) {
+      let page = state.allPages.filter(function(cp){
+        return cp.slug === 'home';
+      });
+      return _.first(page);
+  }
 
 };
 
@@ -58,7 +57,6 @@ const actions = {
     api.pagesApi.getPages(pages => {
       commit(types.STORE_FETCHED_PAGES, { pages });
       commit(types.PAGES_LOADED, true);
-      //commit(types.INCREMENT_LOADING_PROGRESS);
     });
   }
 };
@@ -66,7 +64,7 @@ const actions = {
 // mutations
 const mutations = {
   [types.STORE_FETCHED_PAGES](state, { pages }) {
-    state.all = pages;
+    state.allPages = pages;
   },
 
   [types.PAGES_LOADED](state, val) {

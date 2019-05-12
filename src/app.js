@@ -20,7 +20,7 @@ new Vue({
   components: { App },
   template: '<App/>',
   created() {
-    this.$store.dispatch("getAllCategories");
+    //this.$store.dispatch("getAllCategories");
     this.$store.dispatch("page/getAllPages");
   }
 });

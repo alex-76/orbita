@@ -24,5 +24,8 @@ export default {
       allPagesLoaded: "allPagesLoaded"
     })
   },
+  created() {
+      this.$store.dispatch("page/getAllPages");
+  }
 };
 </script>

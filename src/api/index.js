@@ -4,34 +4,34 @@ import SETTINGS from "../settings";
 import WooCommerceAPI from "woocommerce-api";
 
 
-const alex = {
-    // Test my api
-    getAPage(cb) { //cb = function(pages) { commit(types.STORE_FETCHED_PAGES, { pages }); };
-        axios
-            .get(SETTINGS.API_BASE_PATH + "pages?per_page=5")
-            .then(response => {
-                cb(response.data);
-                console.log(response.data);
-            })
-            .catch(e => {
-                cb(e);
-            });
-
-    },
-    // Get products WC
-    getListProducts(cb) {
-        new WooCommerceAPI({
-            url: SETTINGS.WC.URL_RESOURSE,
-            consumerKey: SETTINGS.WC.CONSUMERKEY,
-            consumerSecret: SETTINGS.WC.CONSUMERSECRET,
-            wpAPI: true,
-            version: 'wc/v3'
-        }).getAsync('products').then(function(response) {
-            cb(JSON.parse(response.toJSON().body));
-        });
-
-    },
-};
+// const alex = {
+//     // Test my api
+//     getAPage(cb) { //cb = function(pages) { commit(types.STORE_FETCHED_PAGES, { pages }); };
+//         axios
+//             .get(SETTINGS.API_BASE_PATH + "pages?per_page=5")
+//             .then(response => {
+//                 cb(response.data);
+//                 console.log(response.data);
+//             })
+//             .catch(e => {
+//                 cb(e);
+//             });
+//
+//     },
+//     // Get products WC
+//     getListProducts(cb) {
+//         new WooCommerceAPI({
+//             url: SETTINGS.WC.URL_RESOURSE,
+//             consumerKey: SETTINGS.WC.CONSUMERKEY,
+//             consumerSecret: SETTINGS.WC.CONSUMERSECRET,
+//             wpAPI: true,
+//             version: 'wc/v3'
+//         }).getAsync('products').then(function(response) {
+//             cb(JSON.parse(response.toJSON().body));
+//         });
+//
+//     },
+// };
 
 // API Pages
 const pagesApi = {
@@ -104,8 +104,6 @@ const categoriesAPI = {
 const wcApi = {};
 
 export default {
-
-  alex,
   pagesApi,
   postsApi,
   categoriesAPI,

@@ -1,15 +1,13 @@
 <template>
+
   <div>
-    <h3>Welcome!</h3>
-
-    <p>You'll probably want to remove all of this stuff, but hey it at least it works!</p>
-
 
     <template v-if="allPagesLoaded">
 
-      <div v-html="pageContent"></div>
+      <div v-html="pageContentHome.content.rendered"></div>
 
     </template>
+
     <Loader v-else/>
 
     <div class="uk-flex uk-flex-left uk-flex-top section-widgets">
@@ -21,12 +19,12 @@
     </div>
 
   </div>
+
 </template>
 
 <script>
 import  RecentPostsWidget from "./widgets/VWRecentPosts.vue";
 import PagesWidget from "./widgets/VWPages.vue";
-import { mapGetters } from "vuex";
 import Loader from "./partials/Loader.vue";
 
 
@@ -53,22 +51,14 @@ export default {
   },
 
   computed: {
-      ...mapGetters('page',{
-          page: "page",
-          allPagesLoaded: "allPagesLoaded"
-      }),
+      allPagesLoaded() {
+          return this.$store.getters['page/allPagesLoaded'];
 
-      pageContent() {
-          return '<b>Text...</b>';
+      },
+      pageContentHome() {
+          return this.$store.getters['page/pageContentHome'];
       }
-  },
-
-
-
-
-
-
-
+  }
 
 };
 </script>
