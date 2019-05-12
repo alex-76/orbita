@@ -1,5 +1,5 @@
 import api from "../../api";
-import _u from "underscore";
+import _ from "underscore";
 import * as types from "../mutation-types";
 
 const namespaced = {
@@ -24,7 +24,8 @@ const actions = {
     // Get all products
     getProducts({ commit }) {
         api.wcApi.getProducts( products => {
-            if(products.length > 0) {
+
+            if(!_.isEmpty(products)) {
                 commit(types.STORE_FETCHED_PRODUCTS, { products });
                 commit(types.PRODUCTS_LOADED, true);
             } else {
