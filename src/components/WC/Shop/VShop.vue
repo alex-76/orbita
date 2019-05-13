@@ -3,7 +3,7 @@
     <template v-if="allProductsLoaded">
       <h1>Shop</h1>
       <h4>List products</h4>
-      <ul class="uk-list">
+      <ul class="uk-child-width-1-3 uk-text-center" uk-grid>
         <li v-for="product in getProducts" :key="product.id">
           {{product.name}}<br>
           <img :src="product.images[0].src" width="120"><br>
@@ -35,14 +35,10 @@ export default {
    },
 
   computed: {
-
       ...mapGetters('shop',{
           getProducts : "getProducts",
           allProductsLoaded : "allProductsLoaded"
       }),
-//      test() {
-//          return this.$store.getters['shop/allProductsLoaded'];
-//      }
   },
 
   created:function() {

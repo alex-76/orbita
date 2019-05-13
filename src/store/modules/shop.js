@@ -8,7 +8,7 @@ const namespaced = {
 
 const state = {
     allProducts : [],
-    loadedproduct      : false,
+    loadedproduct : false,
 };
 
 const getters = {
@@ -25,14 +25,19 @@ const actions = {
     getProducts({ commit }) {
         api.wcApi.getProducts( products => {
 
-            if(!_.isEmpty(products)) {
-                commit(types.STORE_FETCHED_PRODUCTS, { products });
-                commit(types.PRODUCTS_LOADED, true);
-            } else {
-                products = [];
-                commit(types.STORE_FETCHED_PRODUCTS, { products });
-                commit(types.PRODUCTS_LOADED, false);
-            }
+            products = (!_.isEmpty(products)) ? products : [];
+
+            commit(types.STORE_FETCHED_PRODUCTS, { products });
+            commit(types.PRODUCTS_LOADED, (!_.isEmpty(products))? true : false);
+
+            // if(!_.isEmpty(products)) {
+            //     commit(types.STORE_FETCHED_PRODUCTS, { products });
+            //     commit(types.PRODUCTS_LOADED, true);
+            // } else {
+            //     products = [];
+            //     commit(types.STORE_FETCHED_PRODUCTS, { products });
+            //     commit(types.PRODUCTS_LOADED, false);
+            // }
         });
     },
 };
