@@ -16,7 +16,7 @@ const namespaced = {
 // initial state
 const state = {
   recent: [],
-  loaded: false
+  loadedPost: false
 };
 
 // getters
@@ -34,20 +34,15 @@ const getters = {
     return recent.slice(0, limit);
   },
 
-  recentPostsLoaded: state => state.loaded
+  recentPostsLoaded: state => state.loadedPost
 };
 
 // actions
 const actions = {
   getPosts({ commit }, { limit }) {
     api.postsApi.getPosts(limit, posts => {
-      // posts.map((post, i) => {
-      //   posts[i] = createPostSlug(post);
-      // });
-
       commit(types.STORE_FETCHED_POSTS, { posts });
       commit(types.POSTS_LOADED, true);
-      //commit(types.INCREMENT_LOADING_PROGRESS);
     });
   }
 };
@@ -58,7 +53,7 @@ const mutations = {
     state.recent = posts;
   },
   [types.POSTS_LOADED](state, val) {
-    state.loaded = val;
+    state.loadedPost = val;
   }
 };
 

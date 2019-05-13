@@ -8,27 +8,29 @@ const namespaced = {
 
 const state = {
     product : [],
-    loaded : false,
+    loadedProduct : false,
 };
 
 const getters = {
-    productLoaded: state => state.loaded,
+    productLoaded: state => state.loadedProduct,
     getProduct: state => state.product
 };
 
 const actions = {
 
-    // Get all products ( Редактировать этот блок...!!!!!!!!!!!!!)
+    // Get all products
     getProduct({ commit }, id) {
-        api.wcApi.getProduct( (id, product) => {
-
-            //product = (!_.isEmpty(product)) ? product : [];
-
+        api.wcApi.getProduct( id, function(product) {
+            product = (!_.isEmpty(product)) ? product : [];
             commit(types.STORE_FETCHED_SINGLE_PRODUCT, { product });
             commit(types.PRODUCT_SINGLE_LOADED, (!_.isEmpty(product))? true : false);
-
         });
     },
+
+    // Clear state product
+    clearStateProduct({ commit }) {
+        commit('RESET_STATE_PRODUCT');
+    }
 };
 
 const mutations = {
@@ -38,9 +40,12 @@ const mutations = {
     },
 
     [types.PRODUCT_SINGLE_LOADED](state, val) {
-        state.loaded = val;
+        state.loadedProduct = val;
+    },
+    [types.RESET_STATE_PRODUCT](state) {
+        state.product = [];
+        state.loadedProduct = false;
     }
-
 };
 
 

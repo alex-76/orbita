@@ -1,8 +1,22 @@
 <template>
   <div class="container-single-product">
 
-    <template v-if="true">
-      <h2 class="uk-margin uk-text-center uk-text-uppercase">Product</h2>
+    <template v-if="productLoaded">
+      <h2 class="uk-margin uk-text-center uk-text-uppercase">{{getProduct.name}}</h2>
+
+      <div class="uk-child-width-1-2 uk-flex uk-flex-top uk-margin" uk-grid>
+        <div><img :src="getProduct.images[0].src" width="300"></div>
+        <div>
+            <div v-html="getProduct.description"></div>
+            <div v-html="getProduct.price_html"></div>
+            <hr class="uk-divider">
+            <div class="uk-flex uk-flex-left">
+              <input class="uk-input uk-form-width-medium uk-form-large" type="text" placeholder="3">
+              <button @click.prevent="addCart" class="uk-button uk-button-primary uk-button-large">ADD CART</button>
+            </div>
+        </div>
+      </div>
+
     </template>
 
     <Loader v-else/>
@@ -13,6 +27,7 @@
 <script>
 
 import Loader from "../../partials/Loader.vue";
+import _ from "underscore";
 
 export default {
 
@@ -22,22 +37,47 @@ export default {
 
   metaInfo() {
         return {
-            title: 'Product',
+            title: (!_.isEmpty(this.getProduct.name)) ? this.getProduct.name : '' ,
             meta: [
                 { vmid: 'description', name: 'description', content: 'Description example' }
             ]
         }
    },
 
-  computed: {},
+  computed: {
 
-  created:function() {
+      productLoaded() {
+          console.log('computed!');
+          return this.$store.getters['product/productLoaded'];
+      },
 
-      console.log(this.$store.dispatch("product/getProduct", this.$route.params.productID));
-      //this.$store.dispatch('alex/addName', 'New name Alex');
+      getProduct() {
+          return this.$store.getters['product/getProduct'];
+      },
   },
 
-  mounted:function() {}
+  methods: {
+
+      addCart() {
+          alert('Product added to cart!');
+      }
+
+  },
+
+  beforeCreate() {
+      this.$store.dispatch("product/clearStateProduct");
+  },
+
+  created:function() {
+      this.$store.dispatch("product/getProduct", this.$route.params.productID);
+  },
+
+  mounted:function() {},
+
+  beforeUpdate() {},
+
+  updated() {}
+
 };
 
 </script>
@@ -45,6 +85,13 @@ export default {
 <style scoped lang="scss">
 
   div.container-single-product {
+
+    input {
+      width: 60px;
+      border:1px solid #939393;
+      margin-right: 10px;
+      text-align:center;
+    }
 
   }
 

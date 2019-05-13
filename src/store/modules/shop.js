@@ -8,12 +8,12 @@ const namespaced = {
 
 const state = {
     allProducts : [],
-    loaded : false,
+    loadedShop : false,
 };
 
 const getters = {
 
-    allProductsLoaded: state => state.loaded,
+    allProductsLoaded: state => state.loadedShop,
 
     getProducts: state => state.allProducts,
 
@@ -41,7 +41,7 @@ const mutations = {
     },
 
     [types.PRODUCTS_LOADED](state, val) {
-        state.loaded = val;
+        state.loadedShop = val;
     }
 
 };
