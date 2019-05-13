@@ -1,10 +1,5 @@
 import api from "../../api";
 
-const namespaced = {
-    namespaced: true
-};
-
-
 // Init state
 const state = {
     notes: ['Goga fun'],
@@ -102,7 +97,7 @@ const getters = {
 };
 
 export default {
-    namespaced,
+    namespaced: true,
     state,
     getters,
     actions,

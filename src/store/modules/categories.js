@@ -1,11 +1,6 @@
 import api from '../../api'
 import * as types from '../mutation-types'
 
-const namespaced = {
-    namespaced: true
-};
-
-
 // initial state
 const state = {
   all: [],
@@ -42,7 +37,7 @@ const mutations = {
 }
 
 export default {
-    namespaced,
+  namespaced: true,
   state,
   getters,
   actions,

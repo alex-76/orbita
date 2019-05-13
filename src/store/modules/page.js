@@ -2,10 +2,6 @@ import api from "../../api";
 import _ from "lodash";
 import * as types from "../mutation-types";
 
-const namespaced = {
-  namespaced: true
-};
-
 // initial state
 const state = {
   allPages: [],
@@ -73,7 +69,7 @@ const mutations = {
 };
 
 export default {
-  namespaced,
+  namespaced: true,
   state,
   getters,
   actions,

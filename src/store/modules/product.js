@@ -2,9 +2,6 @@ import api from "../../api";
 import _ from "underscore";
 import * as types from "../mutation-types";
 
-const namespaced = {
-    namespaced : true
-};
 
 const state = {
     product : [],
@@ -51,7 +48,7 @@ const mutations = {
 
 
 export default {
-    namespaced,
+    namespaced: true,
     state,
     getters,
     actions,

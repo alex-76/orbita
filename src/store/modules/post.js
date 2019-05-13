@@ -2,9 +2,6 @@ import api from "../../api";
 import _ from "lodash";
 import * as types from "../mutation-types";
 
-const namespaced = {
-  namespaced: true
-};
 
 // const createPostSlug = post => {
 //   let slug = post.link.replace("http://" + window.location.hostname, "");
@@ -58,7 +55,7 @@ const mutations = {
 };
 
 export default {
-  namespaced,
+  namespaced: true,
   state,
   getters,
   actions,

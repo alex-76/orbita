@@ -2,10 +2,6 @@ import api from "../../api";
 import _ from "underscore";
 import * as types from "../mutation-types";
 
-const namespaced = {
-    namespaced : true
-};
-
 const state = {
     allProducts : [],
     loadedShop : false,
@@ -49,7 +45,7 @@ const mutations = {
 
 
 export default {
-    namespaced,
+    namespaced: true,
     state,
     getters,
     actions,
