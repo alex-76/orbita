@@ -1,5 +1,5 @@
 <template>
-  <div class="uk-margin-right widget recent-posts">
+  <div class="widget widget-recent">
     <h3>
       <slot></slot>
     </h3>
@@ -10,7 +10,8 @@
             params: {
                postSlug: post.slug,
                postID: post.id
-            }}">{{ post.title.rendered }}</router-link>
+            }}">{{ post.title.rendered }}
+        </router-link>
       </li>
     </ul>
     <div v-else></div>
@@ -38,3 +39,9 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+  div.widget-recent {
+    border-right: 1px solid #cccccc;
+  }
+</style>

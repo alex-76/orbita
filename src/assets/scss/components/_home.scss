@@ -1,13 +1,12 @@
 
 .section-widgets {
-  border: 1px solid #b0b0b0;
   padding: 15px;
   margin: 30px 0;
 
-  div.widget {
-    margin:10px
+  img {
+    float: left;
+    margin: 0 15px 15px 0;
   }
-  div.recent-posts {
-    margin-left: 50px;
-  }
+
+
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="widget pages">
+  <div class="widget widget-pages">
     <h3>
       <slot></slot>
     </h3>
@@ -29,3 +29,9 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+  div.widget-pages {
+    border-right: 1px solid #cccccc;
+  }
+</style>

@@ -8,12 +8,12 @@ const namespaced = {
 
 const state = {
     allProducts : [],
-    loadedproduct : false,
+    loaded : false,
 };
 
 const getters = {
 
-    allProductsLoaded: state => state.loadedproduct,
+    allProductsLoaded: state => state.loaded,
 
     getProducts: state => state.allProducts,
 
@@ -30,14 +30,6 @@ const actions = {
             commit(types.STORE_FETCHED_PRODUCTS, { products });
             commit(types.PRODUCTS_LOADED, (!_.isEmpty(products))? true : false);
 
-            // if(!_.isEmpty(products)) {
-            //     commit(types.STORE_FETCHED_PRODUCTS, { products });
-            //     commit(types.PRODUCTS_LOADED, true);
-            // } else {
-            //     products = [];
-            //     commit(types.STORE_FETCHED_PRODUCTS, { products });
-            //     commit(types.PRODUCTS_LOADED, false);
-            // }
         });
     },
 };
@@ -49,7 +41,7 @@ const mutations = {
     },
 
     [types.PRODUCTS_LOADED](state, val) {
-        state.loadedproduct = val;
+        state.loaded = val;
     }
 
 };

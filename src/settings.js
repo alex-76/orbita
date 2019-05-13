@@ -5,10 +5,10 @@ export default {
   LOADING_SEGMENTS: 2,
   THEME_DIR_PATH: "/wp-content/themes/_customthema/dist/",
   API_BASE_PATH: "/wp-json/wp/v2/",
+  URL_RESOURSE  : "http://"+window.location.hostname+"",
   WC : {
-        URL_RESOURSE  : "http://"+window.location.hostname+"",
-        CONSUMERKEY   : "ck_07da79da932bba6211d0b8dc58e791b1ffcd123a",
-        CONSUMERSECRET: "cs_fbc1e36ee6d7c05e373fbce09d65adeed25a31e7"
+        CONSUMERKEY   : "ck_a5ca07dfb6c9b5635fd3cd6ce6c34005d45ab64c",
+        CONSUMERSECRET: "cs_3d092a94c93f824c8e4cbdfba1532c2a0a66a5f6",
   }
 
 };

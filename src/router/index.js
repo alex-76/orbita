@@ -7,6 +7,7 @@ import Home from "../components/VHome.vue";
 import Post from "../components/Post/VPost.vue";
 import Page from "../components/Page/VPage.vue";
 import Shop from "../components/WC/Shop/VShop.vue";
+import Product from "../components/WC/SingleProduct/VSingleProduct.vue";
 
 Vue.use(Router);
 
@@ -33,8 +34,13 @@ const router = new Router({
       path: "/:pageSlug",
       name: "Shop",
       component: Shop,
+    },
+    {
+      path: "/:productSlug/:productID",
+      name: "Product",
+      component: Product,
+      props: true
     }
-
   ],
   mode: "history",
   base: "",

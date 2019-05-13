@@ -105,15 +105,28 @@ const wcApi = {
 
     // Get all products
     getProducts(cb) {
-    new WooCommerceAPI({
-        url: SETTINGS.WC.URL_RESOURSE,
-        consumerKey: SETTINGS.WC.CONSUMERKEY,
-        consumerSecret: SETTINGS.WC.CONSUMERSECRET,
-        wpAPI: true,
-        version: 'wc/v3'
-    }).getAsync('products').then(function(response) {
-        cb(JSON.parse(response.toJSON().body));
-    })}
+        new WooCommerceAPI({
+            url: SETTINGS.URL_RESOURSE,
+            consumerKey: SETTINGS.WC.CONSUMERKEY,
+            consumerSecret: SETTINGS.WC.CONSUMERSECRET,
+            wpAPI: true,
+            version: 'wc/v3'
+        }).getAsync('products').then(function(response) {
+            cb(JSON.parse(response.toJSON().body));
+    })},
+
+    // Get product => edit this block...
+    getProduct(id, cb) {
+        new WooCommerceAPI({
+            url: SETTINGS.URL_RESOURSE,
+            consumerKey: SETTINGS.WC.CONSUMERKEY,
+            consumerSecret: SETTINGS.WC.CONSUMERSECRET,
+            wpAPI: true,
+            version: 'wc/v3'
+        }).getAsync('products/' + id).then(function(response) {
+            cb(JSON.parse(response.toJSON().body));
+        })
+    }
 
 };
 

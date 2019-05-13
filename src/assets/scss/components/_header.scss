@@ -1,8 +1,16 @@
 header {
-    background: #e0e0e1;
-    color: #292929;
+    background: #333334;
+    color: #ffffff;
     border: none;
     .uk-navbar-container:not(.uk-navbar-transparent) {
         background: none;
+        .uk-navbar-nav {
+            li {
+                a.router-link-active {
+                    color: #ffffff;
+                    font-weight: bold;
+                }
+            }
+        }
     }
 }

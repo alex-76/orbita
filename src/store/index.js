@@ -6,6 +6,7 @@ import * as getters from './getters'
 import post from './modules/post'
 import page from './modules/page'
 import shop from './modules/shop'
+import product from './modules/product'
 
 Vue.use(Vuex);
 
@@ -23,7 +24,8 @@ export default new Vuex.Store({
   modules: {
     post,
     page,
-    shop
+    shop,
+    product
   },
   strict: debug,
   plugins: [localStorage]
