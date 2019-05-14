@@ -42,7 +42,8 @@ const router = new Router({
       component: Product,
       props: true
     },
-    { path: '*',
+    {
+      path: '*',
       component: NotFoundComponent
     }
   ],
