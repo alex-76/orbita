@@ -8,6 +8,7 @@ import Post from "../components/Post/VPost.vue";
 import Page from "../components/Page/VPage.vue";
 import Shop from "../components/WC/Shop/VShop.vue";
 import Product from "../components/WC/SingleProduct/VSingleProduct.vue";
+import NotFoundComponent from "../components/VNotFoundComponent.vue";
 
 Vue.use(Router);
 
@@ -25,7 +26,7 @@ const router = new Router({
       props: true
     },
     {
-      path: "/:postID/:postSlug",
+      path: "/:postSlug",
       name: "Post",
       component: Post,
       props: true
@@ -40,6 +41,9 @@ const router = new Router({
       name: "Product",
       component: Product,
       props: true
+    },
+    { path: '*',
+      component: NotFoundComponent
     }
   ],
   mode: "history",

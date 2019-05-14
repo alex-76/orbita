@@ -14,7 +14,7 @@
             </router-link>
           </li>
           <li>
-            <router-link :to="{name: 'Post', params: {postSlug: 'news', postID: '1'}}"
+            <router-link :to="{name: 'Post', params: {postSlug: 'news'}}"
                          class="nav-link">News
             </router-link>
           </li>

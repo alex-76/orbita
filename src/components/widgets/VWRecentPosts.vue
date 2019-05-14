@@ -8,8 +8,7 @@
         <router-link :to="{
             name: 'Post',
             params: {
-               postSlug: post.slug,
-               postID: post.id
+               postSlug: post.slug
             }}">{{ post.title.rendered }}
         </router-link>
       </li>
