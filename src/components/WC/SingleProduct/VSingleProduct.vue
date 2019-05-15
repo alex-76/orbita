@@ -58,8 +58,7 @@ export default {
   methods: {
 
       addCart() {
-          //alert('Product added to cart!');
-          this.$store.dispatch("product/addCart");
+          this.$store.dispatch("cart/addCart", { id: 47, q: 3 }); // <===== Edit block
       }
   },
 

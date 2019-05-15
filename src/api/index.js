@@ -115,7 +115,7 @@ const wcApi = {
             cb(JSON.parse(response.toJSON().body));
     })},
 
-    // Get product => edit this block...
+    // Get one product
     getProduct(id, cb) {
         new WooCommerceAPI({
             url: SETTINGS.URL_RESOURSE,
@@ -131,6 +131,26 @@ const wcApi = {
     // Get Cart Products
     getCartContent() {
 
+        axios.get(SETTINGS.URL_RESOURSE+'/wp-json/wc/v2/cart/').
+        then(response => {
+            console.log(response.data);
+        }).
+        catch((error) => {
+            console.log(error);
+        });
+
+    },
+
+    // Add Products to Cart
+    addCart(id, q, cb) {
+        const data ={"product_id": id, "quantity": q};
+        axios.post(SETTINGS.URL_RESOURSE+'/wp-json/wc/v2/cart/add', data).
+            then(response => {
+            cb(response.data);
+        }).
+        catch((error) => {
+            console.log(error);
+        });
     }
 
 };

@@ -16,7 +16,7 @@ const debug = process.env.NODE_ENV !== 'production';
 let localStorage = createPersist({
     namespace: 'APP_WHA',
     initialState: {},
-    expires: 7200 // 2 hour
+    expires: 640000 // 7 days
 });
 
 export default new Vuex.Store({

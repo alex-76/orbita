@@ -2,7 +2,7 @@
   <div class="container-shop">
 
     <template v-if="allProductsLoaded">
-      <h2 class="uk-margin uk-text-center uk-text-uppercase">Catalog of our computers</h2>
+      <h2 class="uk-margin uk-text-center uk-text-uppercase">Catalog of computers</h2>
       <ul class="uk-child-width-1-3 uk-flex uk-flex-bottom uk-text-center" uk-grid>
 
         <li v-for="product in getProducts" :key="product.id">

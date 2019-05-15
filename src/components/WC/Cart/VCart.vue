@@ -31,10 +31,14 @@ export default {
    },
 
   computed: {
-
       cartLoaded() {
-          return true;
-      }
+          //console.log(this.$store.getters['cart/cartLoaded']);
+          return this.$store.getters['cart/cartLoaded'];
+      },
+      getCartContent() {
+          //console.log(this.$store.getters['cart/getCartContent']);
+          return this.$store.getters['cart/getCartContent'];
+      },
   },
 
   methods: {},
