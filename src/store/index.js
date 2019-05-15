@@ -7,6 +7,7 @@ import post from './modules/post'
 import page from './modules/page'
 import shop from './modules/shop'
 import product from './modules/product'
+import cart from './modules/cart'
 
 Vue.use(Vuex);
 
@@ -15,7 +16,7 @@ const debug = process.env.NODE_ENV !== 'production';
 let localStorage = createPersist({
     namespace: 'APP_WHA',
     initialState: {},
-    expires: 1.21e+9 // Two Weeks
+    expires: 7200 // 2 hour
 });
 
 export default new Vuex.Store({
@@ -25,7 +26,8 @@ export default new Vuex.Store({
     post,
     page,
     shop,
-    product
+    product,
+    cart
   },
   strict: debug,
   plugins: [localStorage]

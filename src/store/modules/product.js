@@ -27,6 +27,15 @@ const actions = {
     // Clear state product
     clearStateProduct({ commit }) {
         commit('RESET_STATE_PRODUCT');
+    },
+
+    addCart() {
+        api.wcApi.getCartContent( function() {
+
+            // product = (!_.isEmpty(product)) ? product : [];
+            // commit(types.STORE_FETCHED_SINGLE_PRODUCT, { product });
+            // commit(types.PRODUCT_SINGLE_LOADED, (!_.isEmpty(product))? true : false);
+        });
     }
 };
 

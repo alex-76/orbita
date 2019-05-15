@@ -126,6 +126,11 @@ const wcApi = {
         }).getAsync('products/' + id).then(function(response) {
             cb(JSON.parse(response.toJSON().body));
         })
+    },
+
+    // Get Cart Products
+    getCartContent() {
+
     }
 
 };
