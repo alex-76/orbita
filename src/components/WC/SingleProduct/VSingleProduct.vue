@@ -83,16 +83,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
   div.container-single-product {
-
     input {
       width: 60px;
       border:1px solid #939393;
       margin-right: 10px;
       text-align:center;
     }
-
   }
-
 </style>

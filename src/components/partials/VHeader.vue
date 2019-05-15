@@ -4,6 +4,10 @@
     <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click">
       <div class="uk-navbar-center">
 
+        <a class="uk-navbar-item uk-logo" href="/">
+          <img class="uk-border-circle" :src="logo" />
+        </a>
+
         <ul class="uk-navbar-nav">
           <li class="uk-active">
             <router-link class="nav-link" to="/">Home</router-link>
@@ -30,11 +34,16 @@
 
 <script>
 
+  import SETTINGS from "../../settings";
+  import logo from "../../assets/logo.jpg"
+
   export default {
     name: 'VHeader',
     props: [],
     data () {
-      return {}
+      return {
+          logo: SETTINGS.THEME_DIR_PATH + logo
+      }
     },
     methods: {}
   }

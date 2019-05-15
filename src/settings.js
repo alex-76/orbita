@@ -7,8 +7,8 @@ export default {
   API_BASE_PATH: "/wp-json/wp/v2/",
   URL_RESOURSE  : "http://"+window.location.hostname+"",
   WC : {
-        CONSUMERKEY   : "ck_013e03897789ba1bc3c2091ab15091b62dd3c75e",
-        CONSUMERSECRET: "cs_3c621bcf1e57efae19d3bf9c3cb9c7a32762ad9a",
+        CONSUMERKEY   : "ck_07da79da932bba6211d0b8dc58e791b1ffcd123a",
+        CONSUMERSECRET: "cs_fbc1e36ee6d7c05e373fbce09d65adeed25a31e7",
   }
 
 };
