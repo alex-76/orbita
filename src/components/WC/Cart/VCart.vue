@@ -3,7 +3,12 @@
 
     <template v-if="cartLoaded">
       <h2 class="uk-margin uk-text-center uk-text-uppercase">Cart</h2>
-      <p>List products in cart...</p>
+      <ul class="ul-list">
+        <li  v-for="cart in getCartContent">
+          ID: {{cart.product_id}} - Quantity: {{cart.quantity}}
+        </li>
+      </ul>
+      <a href="#" @click="clearCart">Cart Clear</a>
     </template>
     <Loader v-else/>
 
@@ -32,16 +37,19 @@ export default {
 
   computed: {
       cartLoaded() {
-          //console.log(this.$store.getters['cart/cartLoaded']);
           return this.$store.getters['cart/cartLoaded'];
       },
       getCartContent() {
-          //console.log(this.$store.getters['cart/getCartContent']);
           return this.$store.getters['cart/getCartContent'];
       },
   },
 
-  methods: {},
+  methods: {
+
+    clearCart() {
+      this.$store.dispatch("cart/clearCart");
+    }
+  },
 
   beforeCreate() {},
 

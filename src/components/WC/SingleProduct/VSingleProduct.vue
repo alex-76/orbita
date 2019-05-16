@@ -11,7 +11,7 @@
             <div v-html="getProduct.price_html"></div>
             <hr class="uk-divider">
             <div class="uk-flex uk-flex-left">
-              <input class="uk-input uk-form-width-medium uk-form-large" type="text" value="1">
+              <input class="uk-input uk-form-width-medium uk-form-large" type="text" v-model="quantity" value="1">
               <button @click.prevent="addCart" class="uk-button uk-button-primary uk-button-large">ADD CART</button>
             </div>
         </div>
@@ -34,6 +34,12 @@ export default {
   name:'Product',
 
   components: { Loader },
+
+  data () {
+        return {
+            quantity: 1
+      }
+  },
 
   metaInfo() {
         return {
@@ -58,7 +64,7 @@ export default {
   methods: {
 
       addCart() {
-          this.$store.dispatch("cart/addCart", { id: 47, q: 3 }); // <===== Edit block
+          this.$store.dispatch("cart/addCart", { id: this.$route.params.productID, q: this.quantity });
       }
   },
 

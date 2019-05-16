@@ -23,6 +23,13 @@ const actions = {
              commit(types.STORE_CART_PRODUCTS, cart );
              commit(types.CART_LOADED, true);
         });
+    },
+
+    clearCart() {
+        api.wcApi.clearCart(function(cart) { // <=== edit block
+            console.log('Clear cart');
+            commit(types.STORE_CART_CLEAR, cart );
+        });
     }
 
 };
@@ -37,6 +44,9 @@ const mutations = {
         state.loadedCart = val;
     },
 
+    [types.STORE_CART_CLEAR](state) {
+        state.cart = [];
+    },
 };
 
 
