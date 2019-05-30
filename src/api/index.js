@@ -155,7 +155,7 @@ const wcApi = {
 
     // Clear Cart
     clearCart(cb){
-        axios.post(SETTINGS.URL_RESOURSE+' /wp-json/wc/v2/cart/clear').
+        axios.post(SETTINGS.URL_RESOURSE+'/wp-json/wc/v2/cart/clear').
         then(response => {
             cb(response.data);
         }).

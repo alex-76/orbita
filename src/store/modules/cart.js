@@ -25,9 +25,8 @@ const actions = {
         });
     },
 
-    clearCart() {
-        api.wcApi.clearCart(function(cart) { // <=== edit block
-            console.log('Clear cart');
+    clearCart({commit}) {
+        api.wcApi.clearCart(function(cart) {
             commit(types.STORE_CART_CLEAR, cart );
         });
     }
