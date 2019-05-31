@@ -2,13 +2,27 @@
   <div class="container-cart">
 
     <template v-if="cartLoaded">
+
       <h2 class="uk-margin uk-text-center uk-text-uppercase">Cart</h2>
-      <ul class="ul-list">
-        <li  v-for="cart in getCartContent">
-          ID: {{cart.product_id}} - Quantity: {{cart.quantity}}
-        </li>
-      </ul>
+
+      <template v-for="product in getProducts">
+
+          <template v-for="cart in getCartContent" v-if="product.id == cart.product_id" tag="ul">
+
+          <ul class="ul-list"  uk-grid>
+            <li><img :src="product.images[0].src" width="120"></li>
+            <li>ID: {{cart.product_id}}</li>
+            <li>Quantity: {{cart.quantity}}</li>
+            <li>Total: {{cart.line_subtotal}}</li>
+          </ul>
+
+          </template>
+
+      </template>
+
+
       <a href="#" @click="clearCart">Cart Clear</a>
+
     </template>
     <Loader v-else/>
 
@@ -41,6 +55,9 @@ export default {
       },
       getCartContent() {
           return this.$store.getters['cart/getCartContent'];
+      },
+      getProducts() {
+        return this.$store.getters['shop/getProducts'];
       },
   },
 
