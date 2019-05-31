@@ -20,12 +20,10 @@
 
       </template>
 
-
       <a href="#" @click="clearCart">Cart Clear</a>
 
     </template>
     <Loader v-else/>
-
   </div>
 </template>
 
