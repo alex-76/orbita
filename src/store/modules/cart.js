@@ -36,6 +36,7 @@ const actions = {
 const mutations = {
 
     [types.STORE_CART_PRODUCTS](state, cart ) {
+        //cart.findIndex(x => x.id === '45'); <== сделать проверку на добавление уникального значения в массив корзины!!!
         state.cart.push(cart);
     },
 
