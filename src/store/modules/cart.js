@@ -16,14 +16,14 @@ const getters = {
 
 const actions = {
 
-    addCart({commit}, payload, state ) {
+    addCart({commit}, payload ) {
 
         api.wcApi.addCart( payload.id, payload.q, function(cart) {
-           //cart = (!_.isEmpty(cart)) ? cart : [];
+        //cart = (!_.isEmpty(cart)) ? cart : [];
 
-           //console.log(state.cart);
+           //console.log(cart);
+           //console.log(_.findIndex(obj.cart, { product_id : 230 }));
 
-           //console.log(_.findIndex(state.cart, { product_id : 230 }));
 
             // var users = [{'id': 1, 'name': 'Bob', 'last': 'Brown'},
             //     {'id': 2, 'name': 'Ted', 'last': 'White'},
