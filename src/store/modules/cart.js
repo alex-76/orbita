@@ -16,10 +16,28 @@ const getters = {
 
 const actions = {
 
-    addCart({commit}, payload ) {
+    addCart({commit}, payload, state ) {
 
         api.wcApi.addCart( payload.id, payload.q, function(cart) {
-             //cart = (!_.isEmpty(cart)) ? cart : [];
+           //cart = (!_.isEmpty(cart)) ? cart : [];
+
+           //console.log(state.cart);
+
+           //console.log(_.findIndex(state.cart, { product_id : 230 }));
+
+            // var users = [{'id': 1, 'name': 'Bob', 'last': 'Brown'},
+            //     {'id': 2, 'name': 'Ted', 'last': 'White'},
+            //     {'id': 3, 'name': 'Frank', 'last': 'James'},
+            //     {'id': 4, 'name': 'Ted', 'last': 'Jones'}];
+            // console.log(_.findIndex(users, { name: 'Ted'}));
+
+
+
+           // cart.find(function(element, index, array) {
+           //      return console.log('Push' + element);
+           // });
+
+             //console.log(cart);
              commit(types.STORE_CART_PRODUCTS, cart );
              commit(types.CART_LOADED, true);
         });
@@ -36,7 +54,6 @@ const actions = {
 const mutations = {
 
     [types.STORE_CART_PRODUCTS](state, cart ) {
-        //cart.findIndex(x => x.id === '45'); <== сделать проверку на добавление уникального значения в массив корзины!!!
         state.cart.push(cart);
     },
 
