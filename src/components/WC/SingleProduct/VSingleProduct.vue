@@ -28,6 +28,7 @@
 
 import Loader from "../../partials/Loader.vue";
 import _ from "underscore";
+import UIkit from 'uikit';
 
 export default {
 
@@ -65,6 +66,11 @@ export default {
 
       addCart() {
           this.$store.dispatch("cart/addCart", { id: this.$route.params.productID, q: this.quantity });
+          UIkit.notification("<span uk-icon='icon: check'></span> Product added", {
+              pos: 'bottom-right',
+              status: 'success',
+              timeout: 2000
+          });
       }
   },
 

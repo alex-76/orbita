@@ -54,7 +54,23 @@ const actions = {
 const mutations = {
 
     [types.STORE_CART_PRODUCTS](state, cart ) {
-        state.cart.push(cart);
+
+        console.log(cart.product_id);
+
+        if(_.findIndex(state.cart, { product_id: cart.product_id}) === -1) {
+            state.cart.push(cart);
+            console.log('Push...');
+        }
+        else { //Проверить инкремент количества товара!!!
+            let ob = state.cart[_.findIndex(state.cart, { product_id: cart.product_id})];
+            ob.quantity = Number(ob.quantity) + Number(cart.quantity);
+            console.log('Increment...');
+
+            let suma = Number(ob.quantity) + Number(cart.quantity);
+            console.log(suma);
+        }
+
+        console.log(state.cart);
     },
 
     [types.CART_LOADED](state, val) {
