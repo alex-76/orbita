@@ -11,8 +11,10 @@
                 <th>Foto</th>
                 <th>Quantity</th>
                 <th>Total</th>
+                <th>Remove</th>
             </tr>
             <template v-for="product in getProducts">
+
               <template v-for="cart in getCartContent" v-if="product.id == cart.product_id" tag="ul">
 
                   <tr>
@@ -20,15 +22,17 @@
                       <td><img :src="product.images[0].src" width="120"></td>
                       <td>{{cart.quantity}}</td>
                       <td>{{cart.line_subtotal}}</td>
+                      <td><a href="#" @click.prevent="removeProduct(product.id)">X</a></td>
                   </tr>
 
               </template>
+
           </template>
       </table>
 
      <hr class="uk-divider">
 
-     <a href="#" @click="clearCart">Cart Clear</a>
+     <a href="#" @click.prevent="clearCart">Cart Clear</a>
 
     </template>
     <Loader v-else/>
@@ -71,7 +75,10 @@ export default {
 
     clearCart() {
       this.$store.dispatch("cart/clearCart");
-    }
+    },
+      removeProduct(id) {
+        this.$store.dispatch("cart/removeProduct",{ id: id });
+      }
   },
 
   beforeCreate() {},

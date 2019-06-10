@@ -19,30 +19,14 @@ const actions = {
     addCart({commit}, payload ) {
 
         api.wcApi.addCart( payload.id, payload.q, function(cart) {
-        //cart = (!_.isEmpty(cart)) ? cart : [];
 
-           //console.log(cart);
-           //console.log(_.findIndex(obj.cart, { product_id : 230 }));
-
-
-            // var users = [{'id': 1, 'name': 'Bob', 'last': 'Brown'},
-            //     {'id': 2, 'name': 'Ted', 'last': 'White'},
-            //     {'id': 3, 'name': 'Frank', 'last': 'James'},
-            //     {'id': 4, 'name': 'Ted', 'last': 'Jones'}];
-            // console.log(_.findIndex(users, { name: 'Ted'}));
-
-
-
-           // cart.find(function(element, index, array) {
-           //      return console.log('Push' + element);
-           // });
-
-             //console.log(cart);
              commit(types.STORE_CART_PRODUCTS, cart );
              commit(types.CART_LOADED, true);
         });
     },
-
+    removeProduct({commit}, payload) {
+        commit(types.STORE_CART_REMOVE, payload.id );
+    },
     clearCart({commit}) {
         api.wcApi.clearCart(function(cart) {
             commit(types.STORE_CART_CLEAR, cart );
@@ -73,6 +57,15 @@ const mutations = {
 
     [types.STORE_CART_CLEAR](state) {
         state.cart = [];
+        state.loadedCart = false;
+    },
+    [types.STORE_CART_REMOVE](state, id) {
+
+        alert(id + 'Remove item');
+
+        // Удаляем элемент с массива корзины
+        //state.cart = [];
+        //state.loadedCart = false;
     },
 };
 
