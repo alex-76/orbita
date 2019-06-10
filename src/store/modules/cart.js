@@ -63,10 +63,13 @@ const mutations = {
         }
         else { //Проверить инкремент количества товара!!!
             let ob = state.cart[_.findIndex(state.cart, { product_id: cart.product_id})];
-            ob.quantity = Number(ob.quantity) + Number(cart.quantity);
+            console.log('ob: '+Number(ob.quantity));
+            console.log('cart: '+Number(cart.quantity));
+
+            ob.quantity = Number(cart.quantity);
             console.log('Increment...');
 
-            let suma = Number(ob.quantity) + Number(cart.quantity);
+            let suma = Number(cart.quantity);
             console.log(suma);
         }
 
