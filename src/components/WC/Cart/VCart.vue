@@ -5,22 +5,30 @@
 
       <h2 class="uk-margin uk-text-center uk-text-uppercase">Cart</h2>
 
-      <template v-for="product in getProducts">
+        <table class="uk-table uk-table-divider">
+            <tr>
+                <th>ID</th>
+                <th>Foto</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            <template v-for="product in getProducts">
+              <template v-for="cart in getCartContent" v-if="product.id == cart.product_id" tag="ul">
 
-          <template v-for="cart in getCartContent" v-if="product.id == cart.product_id" tag="ul">
+                  <tr>
+                      <td>{{cart.product_id}}</td>
+                      <td><img :src="product.images[0].src" width="120"></td>
+                      <td>{{cart.quantity}}</td>
+                      <td>{{cart.line_subtotal}}</td>
+                  </tr>
 
-          <ul class="ul-list"  uk-grid>
-            <li><img :src="product.images[0].src" width="120"></li>
-            <li>ID: {{cart.product_id}}</li>
-            <li>Quantity: {{cart.quantity}}</li>
-            <li>Total: {{cart.line_subtotal}}</li>
-          </ul>
-
+              </template>
           </template>
+      </table>
 
-      </template>
+     <hr class="uk-divider">
 
-      <a href="#" @click="clearCart">Cart Clear</a>
+     <a href="#" @click="clearCart">Cart Clear</a>
 
     </template>
     <Loader v-else/>

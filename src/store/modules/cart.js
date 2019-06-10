@@ -55,13 +55,15 @@ const mutations = {
 
     [types.STORE_CART_PRODUCTS](state, cart ) {
 
-        if(_.findIndex(state.cart, { product_id: cart.product_id}) === -1) {
-            state.cart.push(cart);
-        }
-        else {
-            let ob = state.cart[_.findIndex(state.cart, { product_id: cart.product_id})];
-            ob.quantity = Number(cart.quantity);
-        }
+        state.cart.push(cart);
+
+        // if(_.findIndex(state.cart, { product_id: cart.product_id}) === -1) {
+        //     state.cart.push(cart);
+        // }
+        // else {
+        //     let ob = state.cart[_.findIndex(state.cart, { product_id: cart.product_id})];
+        //     ob.quantity = Number(cart.quantity);
+        // }
 
     },
 
