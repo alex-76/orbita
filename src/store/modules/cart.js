@@ -63,6 +63,10 @@ const mutations = {
 
         alert(id + 'Remove item');
 
+        if(_.findIndex(state.cart, { product_id: id}) !== -1) {
+            //let ob = state.cart[_.findIndex(state.cart, { product_id: id})];
+        }
+
         // Удаляем элемент с массива корзины
         //state.cart = [];
         //state.loadedCart = false;
