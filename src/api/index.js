@@ -162,8 +162,29 @@ const wcApi = {
         catch((error) => {
             console.log(error);
         });
-    }
+    },
+    // Remove Item from Cart
+    removeItemCart(cart_item_key, cb){
+        axios.delete(SETTINGS.URL_RESOURSE+'/wp-json/wc/v2/cart/cart-item', { data: { "cart_item_key":cart_item_key }}).
+        then(response => {
+            cb(response.data);
+        }).
+        catch((error) => {
+            console.log(error);
+        });
+    },
 
+    // Get Cart Totals
+    getCartTotals(cb) {
+        axios.get(SETTINGS.URL_RESOURSE+'/wp-json/wc/v2/cart/totals').
+        then(response => {
+            cb(response.data);
+        }).
+        catch((error) => {
+            console.log(error);
+        });
+
+    }
 };
 
 export default {

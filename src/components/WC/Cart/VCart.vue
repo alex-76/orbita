@@ -22,20 +22,28 @@
                       <td><img :src="product.images[0].src" width="120"></td>
                       <td>{{cart.quantity}}</td>
                       <td>{{cart.line_subtotal}}</td>
-                      <td><a href="#" @click.prevent="removeProduct(product.id)">X</a></td>
+                      <td><a href="#" @click.prevent="removeItemCart(product.id, cart.key)">X</a></td>
                   </tr>
 
               </template>
 
           </template>
+            <tr>
+                <td class="subtotal" colspan="5">Total: {{getCartTotals.subtotal}}</td>
+            </tr>
       </table>
+
+
 
      <hr/>
 
      <a href="#" @click.prevent="clearCart">Cart Clear</a>
 
     </template>
-    <Loader v-else/>
+      <template v-else>
+          <h3>Cart is empty</h3>
+      </template>
+
   </div>
 </template>
 
@@ -67,29 +75,45 @@ export default {
           return this.$store.getters['cart/getCartContent'];
       },
       getProducts() {
-        return this.$store.getters['shop/getProducts'];
+          return this.$store.getters['shop/getProducts'];
       },
+      getCartTotals() {
+          return this.$store.getters['cart/getCartTotals'];
+      }
   },
+
 
   methods: {
 
       clearCart() {
         this.$store.dispatch("cart/clearCart");
       },
-      removeProduct(id) {
-        this.$store.dispatch("cart/removeProduct",{ id: id });
+      removeItemCart(id,key) {
+        this.$store.dispatch("cart/removeItemCart",{ id: id, key: key });
       }
   },
 
-  beforeCreate() {},
+  beforeCreate() {
+      console.log('beforeCreate');
+  },
 
-  created:function() {},
+  created:function() {
+      console.log('created');
+      this.$store.dispatch("cart/cartTotals");
+  },
 
-  mounted:function() {},
+  mounted:function() {
+     console.log('mounted');
+  },
 
-  beforeUpdate() {},
+  beforeUpdate() {
+      console.log('beforeUpdate');
+      this.$store.dispatch("cart/cartTotals");
+  },
 
-  updated() {}
+  updated() {
+      console.log('updated');
+  }
 
 };
 
@@ -103,5 +127,11 @@ export default {
       margin-right: 10px;
       text-align:center;
     }
+      table {
+          td.subtotal {
+              text-align: right;
+          }
+      }
+
   }
 </style>
