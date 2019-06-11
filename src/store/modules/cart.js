@@ -39,16 +39,13 @@ const mutations = {
 
     [types.STORE_CART_PRODUCTS](state, cart ) {
 
-        state.cart.push(cart);
-
-        // if(_.findIndex(state.cart, { product_id: cart.product_id}) === -1) {
-        //     state.cart.push(cart);
-        // }
-        // else {
-        //     let ob = state.cart[_.findIndex(state.cart, { product_id: cart.product_id})];
-        //     ob.quantity = Number(cart.quantity);
-        // }
-
+        if(_.findIndex(state.cart, { product_id: cart.product_id}) === -1) {
+            state.cart.unshift(cart);
+        }
+        else {
+            state.cart.splice(state.cart[_.findIndex(state.cart, { product_id: cart.product_id})], 1);
+            state.cart.unshift(cart);
+        }
     },
 
     [types.CART_LOADED](state, val) {
@@ -61,15 +58,9 @@ const mutations = {
     },
     [types.STORE_CART_REMOVE](state, id) {
 
-        alert(id + 'Remove item');
-
         if(_.findIndex(state.cart, { product_id: id}) !== -1) {
-            //let ob = state.cart[_.findIndex(state.cart, { product_id: id})];
+            state.cart.splice(state.cart[ _.findIndex(state.cart, { product_id: id})], 1);
         }
-
-        // Удаляем элемент с массива корзины
-        //state.cart = [];
-        //state.loadedCart = false;
     },
 };
 

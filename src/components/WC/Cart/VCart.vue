@@ -15,7 +15,7 @@
             </tr>
             <template v-for="product in getProducts">
 
-              <template v-for="cart in getCartContent" v-if="product.id == cart.product_id" tag="ul">
+              <template v-for="cart in getCartContent" v-if="product.id === cart.product_id">
 
                   <tr>
                       <td>{{cart.product_id}}</td>
@@ -30,7 +30,7 @@
           </template>
       </table>
 
-     <hr class="uk-divider">
+     <hr/>
 
      <a href="#" @click.prevent="clearCart">Cart Clear</a>
 
@@ -73,9 +73,9 @@ export default {
 
   methods: {
 
-    clearCart() {
-      this.$store.dispatch("cart/clearCart");
-    },
+      clearCart() {
+        this.$store.dispatch("cart/clearCart");
+      },
       removeProduct(id) {
         this.$store.dispatch("cart/removeProduct",{ id: id });
       }
