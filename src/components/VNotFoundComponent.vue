@@ -1,5 +1,5 @@
 <template>
-      <div class="" >Not Found Page</div>
+      <div class="notFound" >Not Found Page</div>
 </template>
 
 <script>

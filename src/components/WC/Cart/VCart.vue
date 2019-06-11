@@ -5,39 +5,44 @@
 
       <h2 class="uk-margin uk-text-center uk-text-uppercase">Cart</h2>
 
-        <table class="uk-table uk-table-divider">
-            <tr>
-                <th>ID</th>
+      <table class="uk-table uk-table-divider">
+          <tr>
                 <th>Foto</th>
                 <th>Quantity</th>
                 <th>Total</th>
                 <th>Remove</th>
-            </tr>
-            <template v-for="product in getProducts">
-
+          </tr>
+          <template v-for="product in getProducts">
               <template v-for="cart in getCartContent" v-if="product.id === cart.product_id">
-
                   <tr>
-                      <td>{{cart.product_id}}</td>
-                      <td><img :src="product.images[0].src" width="120"></td>
+                      <td>
+                          <router-link :to="{
+                              name: 'Product',
+                              params: {
+                                 productSlug : product.slug,
+                                 productID: product.id
+                              }}">
+                              <img :src="product.images[0].src" width="120">
+                          </router-link>
+                      </td>
                       <td>{{cart.quantity}}</td>
                       <td>{{cart.line_subtotal}}</td>
-                      <td><a href="#" @click.prevent="removeItemCart(product.id, cart.key)">X</a></td>
+                      <td><a href="#" @click.prevent="removeItemCart(product.id, cart.key)"><span uk-icon="close"></span></a></td>
                   </tr>
-
               </template>
-
           </template>
             <tr>
-                <td class="subtotal" colspan="5">Total: {{getCartTotals.subtotal}}</td>
+                <td><a href="#" class="uk-button uk-button-primary" @click.prevent="clearCart">Clear</a></td>
+                <td colspan="2"></td>
+                <td class="subtotal" >Total: {{getCartTotals.subtotal}}</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="uk-text-right">
+                    <router-link :to="{name: 'Checkout', params: {pageSlug: 'checkout'}}" class="uk-button uk-button-primary uk-button-large">CHECKOUT</router-link>
+                </td>
             </tr>
       </table>
 
-
-
-     <hr/>
-
-     <a href="#" @click.prevent="clearCart">Cart Clear</a>
 
     </template>
       <template v-else>
@@ -128,10 +133,15 @@ export default {
       text-align:center;
     }
       table {
+          th,td {
+              text-align: center;
+              vertical-align: middle;
+          }
           td.subtotal {
               text-align: right;
+              font-size: 26px;
+              font-weight: bold;
           }
       }
-
   }
 </style>
