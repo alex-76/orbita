@@ -41,7 +41,6 @@ const actions = {
     cartTotals({commit}) {
 
         api.wcApi.getCartTotals(function(total) {
-            //console.log('api: ' + total.subtotal);
             commit(types.STORE_CART_TOTAL, total );
         });
     }

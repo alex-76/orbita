@@ -102,7 +102,6 @@ export default {
               //     }
               // ]
           }
-
       };
   },
 
@@ -122,6 +121,7 @@ export default {
   methods: {
 
       payment() {
+          // Нужно заполнить массив line_items объектами из корзины
           const data = this.dataOrder;
           this.$store.dispatch("checkout/createOrder",{ data : data });
       }
