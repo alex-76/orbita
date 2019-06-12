@@ -98,27 +98,19 @@ export default {
       }
   },
 
-  beforeCreate() {
-      console.log('beforeCreate');
-  },
+  beforeCreate() {},
 
   created:function() {
-      console.log('created');
       this.$store.dispatch("cart/cartTotals");
   },
 
-  mounted:function() {
-     console.log('mounted');
-  },
+  mounted:function() {},
 
   beforeUpdate() {
-      console.log('beforeUpdate');
       this.$store.dispatch("cart/cartTotals");
   },
 
-  updated() {
-      console.log('updated');
-  }
+  updated() {}
 
 };
 

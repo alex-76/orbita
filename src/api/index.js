@@ -3,36 +3,6 @@ import axios from "axios";
 import SETTINGS from "../settings";
 import WooCommerceAPI from "woocommerce-api";
 
-
-// const alex = {
-//     // Test my api
-//     getAPage(cb) { //cb = function(pages) { commit(types.STORE_FETCHED_PAGES, { pages }); };
-//         axios
-//             .get(SETTINGS.API_BASE_PATH + "pages?per_page=5")
-//             .then(response => {
-//                 cb(response.data);
-//                 console.log(response.data);
-//             })
-//             .catch(e => {
-//                 cb(e);
-//             });
-//
-//     },
-//     // Get products WC
-//     getListProducts(cb) {
-//         new WooCommerceAPI({
-//             url: SETTINGS.WC.URL_RESOURSE,
-//             consumerKey: SETTINGS.WC.CONSUMERKEY,
-//             consumerSecret: SETTINGS.WC.CONSUMERSECRET,
-//             wpAPI: true,
-//             version: 'wc/v3'
-//         }).getAsync('products').then(function(response) {
-//             cb(JSON.parse(response.toJSON().body));
-//         });
-//
-//     },
-// };
-
 // API Pages
 const pagesApi = {
 
@@ -128,6 +98,22 @@ const wcApi = {
         })
     },
 
+    // Create Order
+    createOrder(data, cb) {
+
+        console.log(data);
+
+        new WooCommerceAPI({
+            url: SETTINGS.URL_RESOURSE,
+            consumerKey: SETTINGS.WC.CONSUMERKEY,
+            consumerSecret: SETTINGS.WC.CONSUMERSECRET,
+            wpAPI: true,
+            version: 'wc/v3'
+        }).post('orders/', data, function(err, data, res){
+            cb(data);
+        })
+    },
+
     // Get Cart Products
     getCartContent() {
 
@@ -163,6 +149,7 @@ const wcApi = {
             console.log(error);
         });
     },
+
     // Remove Item from Cart
     removeItemCart(cart_item_key, cb){
         axios.delete(SETTINGS.URL_RESOURSE+'/wp-json/wc/v2/cart/cart-item', { data: { "cart_item_key":cart_item_key }}).

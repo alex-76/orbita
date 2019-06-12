@@ -3,6 +3,47 @@
 
       <h3>Checkout page</h3>
 
+      <form>
+          <fieldset class="uk-fieldset">
+
+              <legend class="uk-legend">Billing</legend>
+
+              <div class="uk-margin">
+                  <input v-model="dataOrder.billing.first_name" class="uk-input uk-width-1-2" type="text" name="first_name" placeholder="First Name">
+              </div>
+              <div class="uk-margin">
+                  <input v-model="dataOrder.billing.last_name" class="uk-input uk-width-1-2" type="text" name="last_name" placeholder="Last Name">
+              </div>
+              <div class="uk-margin">
+                  <input v-model="dataOrder.billing.address_1" class="uk-input uk-width-1-2" type="text" name="address_1" placeholder="Address">
+              </div>
+              <div class="uk-margin">
+                  <input v-model="dataOrder.billing.city" class="uk-input uk-width-1-2" type="text" name="city" placeholder="City">
+              </div>
+              <div class="uk-margin">
+                  <input v-model="dataOrder.billing.state" class="uk-input uk-width-1-2" type="text" name="state" placeholder="State">
+              </div>
+              <div class="uk-margin">
+                  <input v-model="dataOrder.billing.postcode" class="uk-input uk-width-1-2" type="text" name="postcode" placeholder="Postcode">
+              </div>
+              <div class="uk-margin">
+                  <input v-model="dataOrder.billing.country" class="uk-input uk-width-1-2" type="text" name="country" placeholder="Country">
+              </div>
+              <div class="uk-margin">
+                  <input v-model="dataOrder.billing.email" class="uk-input uk-width-1-2" type="text" name="email" placeholder="Email">
+              </div>
+              <div class="uk-margin">
+                  <input v-model="dataOrder.billing.phone" class="uk-input uk-width-1-2" type="text" name="phone" placeholder="Phone">
+              </div>
+
+          </fieldset>
+
+          <button class="uk-button uk-button-primary" @click.prevent="payment">Payment</button>
+
+      </form>
+
+      <hr/>
+
   </div>
 </template>
 
@@ -13,7 +54,57 @@ import _ from "underscore";
 
 export default {
 
-  name:'Cart',
+  name:'Checkout',
+
+  data() {
+      return {
+          dataOrder : {
+              payment_method: 'bacs',
+              payment_method_title: 'Direct Bank Transfer',
+              set_paid: true,
+              billing: {
+                  'first_name' : '',
+                  'last_name'  : '',
+                  'address_1'  : '',
+                  'city'       : '',
+                  'state'      : '',
+                  'postcode'   : '',
+                  'country'    : '',
+                  'email'      : '',
+                  'phone'      : '',
+
+              },
+              // shipping: {
+              //     first_name: '',
+              //     last_name: '',
+              //     address_1: '',
+              //     address_2: '',
+              //     city: '',
+              //     state: '',
+              //     postcode: '',
+              //     country: ''
+              // },
+              line_items: [
+                  {
+                      product_id: 232,
+                      quantity: 3
+                  },
+                  {
+                      product_id: 230,
+                      quantity: 5
+                  }
+              ],
+              // shipping_lines: [
+              //     {
+              //         method_id: '',
+              //         method_title: '',
+              //         total: ''
+              //     }
+              // ]
+          }
+
+      };
+  },
 
   components: { Loader },
 
@@ -28,28 +119,23 @@ export default {
 
   computed: {},
 
+  methods: {
 
-  methods: {},
-
-  beforeCreate() {
-      console.log('beforeCreate');
+      payment() {
+          const data = this.dataOrder;
+          this.$store.dispatch("checkout/createOrder",{ data : data });
+      }
   },
 
-  created:function() {
-      console.log('created');
-  },
+  beforeCreate() {},
 
-  mounted:function() {
-     console.log('mounted');
-  },
+  created:function() {},
 
-  beforeUpdate() {
-      console.log('beforeUpdate');
-  },
+  mounted:function() {},
 
-  updated() {
-      console.log('updated');
-  }
+  beforeUpdate() {},
+
+  updated() {}
 
 };
 

@@ -8,6 +8,7 @@ import page from './modules/page'
 import shop from './modules/shop'
 import product from './modules/product'
 import cart from './modules/cart'
+import checkout from './modules/checkout'
 
 Vue.use(Vuex);
 
@@ -27,7 +28,8 @@ export default new Vuex.Store({
     page,
     shop,
     product,
-    cart
+    cart,
+    checkout
   },
   strict: debug,
   plugins: [localStorage]

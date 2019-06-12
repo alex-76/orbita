@@ -78,15 +78,20 @@ router.afterEach((to, from) => {
   let body = document.querySelector("body");
   let bodyClasses = body.className.split(" ");
 
+  //console.log(bodyClasses);
+
   if (bodyClasses.length > 0) {
     const newBodyClasses = bodyClasses.filter(theClass =>
       theClass.startsWith("vue--page--")
     );
+    //console.log(newBodyClasses);
   }
 
   const slug = _.isEmpty(to.params.postSlug)
     ? to.params.pageSlug
     : to.params.postSlug;
+
+  //console.log(slug);
 
   body.classList.add("vue--page--" + slug);
 });
