@@ -84,16 +84,7 @@ export default {
               //     postcode: '',
               //     country: ''
               // },
-              line_items: [
-                  {
-                      product_id: 232,
-                      quantity: 3
-                  },
-                  {
-                      product_id: 230,
-                      quantity: 5
-                  }
-              ],
+              line_items: [],
               // shipping_lines: [
               //     {
               //         method_id: '',
@@ -122,7 +113,7 @@ export default {
 
       payment() {
           // Нужно заполнить массив line_items объектами из корзины
-          // После создания заказа необходимо очистить корзину
+          // После создания заказа необходимо очистить корзину и перенаправить на страницу завершения!
           const data = this.dataOrder;
           this.$store.dispatch("checkout/createOrder",{ data : data });
       }
@@ -130,7 +121,18 @@ export default {
 
   beforeCreate() {},
 
-  created:function() {},
+  created:function() {
+      // здесь наполняем массив line_items из корзины
+      // console.log(this.$store.getters['cart/getCartContent']);
+
+       let arr = this.$store.getters['cart/getCartContent'];
+       for(let i = 0; i < arr.length; i++) {
+
+           this.dataOrder.line_items.push({ product_id : arr[i].product_id, quantity:arr[i].quantity });
+       }
+       console.log(this.dataOrder.line_items);
+
+  },
 
   mounted:function() {},
 
