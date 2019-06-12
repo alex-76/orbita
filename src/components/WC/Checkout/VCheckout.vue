@@ -122,6 +122,7 @@ export default {
 
       payment() {
           // Нужно заполнить массив line_items объектами из корзины
+          // После создания заказа необходимо очистить корзину
           const data = this.dataOrder;
           this.$store.dispatch("checkout/createOrder",{ data : data });
       }
