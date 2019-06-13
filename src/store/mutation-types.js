@@ -17,6 +17,9 @@ export const STORE_CART_CLEAR = 'STORE_CART_CLEAR';
 export const STORE_CART_REMOVE = 'STORE_CART_REMOVE';
 export const STORE_CART_TOTAL  = 'STORE_CART_TOTAL';
 
+export const CHECKOUT_LOADED = 'CHECKOUT_LOADED';
+
+
 
 // export const STORE_FETCHED_USER = 'STORE_FETCHED_USER';
 // export const LOGIN_USER = 'LOGIN_USER';

@@ -5,34 +5,33 @@ import * as types from "../mutation-types";
 
 const state = {
     loadedCheckout : false,
-
 };
 
 const getters = {
-    checkoutLoaded:  state => state.loadedCheckout,
-    //getCartContent: state => state.cart
+    loadedCheckout: state => state.loadedCheckout,
 };
 
 const actions = {
 
     createOrder({commit}, payload) {
 
+        commit(types.CHECKOUT_LOADED, true);
+
         api.wcApi.createOrder( payload.data,function(order) {
 
               commit('cart/'+types.STORE_CART_CLEAR, null, { root: true } );
               commit('cart/'+types.CART_LOADED, true, { root: true } );
-              //commit('namespace/TOGGLE_SAVING', null, { root: true });
+              commit('cart/'+types.STORE_CART_TOTAL, null, { root: true } );
+              commit(types.CHECKOUT_LOADED, false);
         });
     },
 
 };
 
 const mutations = {
-
-    //[types.STORE_CART_TOTAL](state, total) {
-        //state.cartTotals = total;
-        //console.log('Mutation: ' + state.cartTotals);
-    //},
+    [types.CHECKOUT_LOADED](state, val) {
+        state.loadedCheckout = val;
+    },
 };
 
 export default {

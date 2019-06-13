@@ -43,11 +43,11 @@
             </tr>
       </table>
 
-
     </template>
-      <template v-else>
+
+    <template v-else>
           <h3>Cart is empty</h3>
-      </template>
+    </template>
 
   </div>
 </template>
