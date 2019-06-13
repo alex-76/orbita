@@ -42,6 +42,21 @@
 
       </form>
 
+      <div class="uk-section uk-section-muted uk-margin-top uk-margin-bottom uk-padding payment">
+          <div class="uk-container">
+              <h3>Product</h3>
+              <div class="uk-grid-match uk-child-width-1-2@m" uk-grid>
+                  <div>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                  </div>
+                  <div>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+
       <hr/>
 
   </div>
@@ -126,7 +141,7 @@ export default {
       // console.log(this.$store.getters['cart/getCartContent']);
 
        let arr = this.$store.getters['cart/getCartContent'];
-       for(let i = 0; i < arr.length; i++) {
+       for( let i = 0; i < arr.length; i++ ) {
 
            this.dataOrder.line_items.push({ product_id : arr[i].product_id, quantity:arr[i].quantity });
        }
@@ -146,6 +161,15 @@ export default {
 
 <style scoped lang="scss">
   div.container-checkout {
+
+      .payment {
+          .uk-container {
+              & > * {
+                  font-size: 16px;
+              }
+          }
+
+      }
 
   }
 </style>
