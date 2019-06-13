@@ -101,7 +101,7 @@ const wcApi = {
     // Create Order
     createOrder(data, cb) {
 
-        console.log(data);
+        //console.log(data);
 
         new WooCommerceAPI({
             url: SETTINGS.URL_RESOURSE,

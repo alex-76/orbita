@@ -79,8 +79,8 @@ const mutations = {
     },
 
     [types.STORE_CART_TOTAL](state, total) {
+
         state.cartTotals = total;
-        //console.log('Mutation: ' + state.cartTotals);
     },
 };
 

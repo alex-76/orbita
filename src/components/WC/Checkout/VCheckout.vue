@@ -1,7 +1,8 @@
 <template>
+
   <div class="container-checkout">
 
-      <h3>Checkout page</h3>
+      <h2 class="uk-margin uk-text-center uk-text-uppercase">Checkout page</h2>
 
       <form>
           <fieldset class="uk-fieldset">
@@ -9,63 +10,76 @@
               <legend class="uk-legend">Billing</legend>
 
               <div class="uk-margin">
-                  <input v-model="dataOrder.billing.first_name" class="uk-input uk-width-1-2" type="text" name="first_name" placeholder="First Name">
+                  <input v-model.trim="dataOrder.billing.first_name" class="uk-input uk-width-1-2" type="text" name="first_name" placeholder="First Name">
               </div>
               <div class="uk-margin">
-                  <input v-model="dataOrder.billing.last_name" class="uk-input uk-width-1-2" type="text" name="last_name" placeholder="Last Name">
+                  <input v-model.trim="dataOrder.billing.last_name" class="uk-input uk-width-1-2" type="text" name="last_name" placeholder="Last Name">
               </div>
               <div class="uk-margin">
-                  <input v-model="dataOrder.billing.address_1" class="uk-input uk-width-1-2" type="text" name="address_1" placeholder="Address">
+                  <input v-model.trim="dataOrder.billing.address_1" class="uk-input uk-width-1-2" type="text" name="address_1" placeholder="Address">
               </div>
               <div class="uk-margin">
-                  <input v-model="dataOrder.billing.city" class="uk-input uk-width-1-2" type="text" name="city" placeholder="City">
+                  <input v-model.trim="dataOrder.billing.city" class="uk-input uk-width-1-2" type="text" name="city" placeholder="City">
               </div>
               <div class="uk-margin">
-                  <input v-model="dataOrder.billing.state" class="uk-input uk-width-1-2" type="text" name="state" placeholder="State">
+                  <input v-model.trim="dataOrder.billing.state" class="uk-input uk-width-1-2" type="text" name="state" placeholder="State">
               </div>
               <div class="uk-margin">
-                  <input v-model="dataOrder.billing.postcode" class="uk-input uk-width-1-2" type="text" name="postcode" placeholder="Postcode">
+                  <input v-model.trim="dataOrder.billing.postcode" class="uk-input uk-width-1-2" type="text" name="postcode" placeholder="Postcode">
               </div>
               <div class="uk-margin">
-                  <input v-model="dataOrder.billing.country" class="uk-input uk-width-1-2" type="text" name="country" placeholder="Country">
+                  <input v-model.trim="dataOrder.billing.country" class="uk-input uk-width-1-2" type="text" name="country" placeholder="Country">
               </div>
               <div class="uk-margin">
-                  <input v-model="dataOrder.billing.email" class="uk-input uk-width-1-2" type="text" name="email" placeholder="Email">
+                  <input v-model.trim="dataOrder.billing.email" class="uk-input uk-width-1-2" type="text" name="email" placeholder="Email">
               </div>
               <div class="uk-margin">
-                  <input v-model="dataOrder.billing.phone" class="uk-input uk-width-1-2" type="text" name="phone" placeholder="Phone">
+                  <input v-model.trim="dataOrder.billing.phone" class="uk-input uk-width-1-2" type="text" name="phone" placeholder="Phone">
               </div>
 
           </fieldset>
-
-          <button class="uk-button uk-button-primary" @click.prevent="payment">Payment</button>
-
       </form>
 
       <div class="uk-section uk-section-muted uk-margin-top uk-margin-bottom uk-padding payment">
           <div class="uk-container">
-              <h3>Product</h3>
-              <div class="uk-grid-match uk-child-width-1-2@m" uk-grid>
-                  <div>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                  </div>
-                  <div>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                  </div>
-              </div>
 
+              <h3 class="uk-flex uk-flex-between">
+                  <span>Product</span>
+                  <span>Subtotal</span>
+              </h3>
+
+              <div class="uk-child-width-1-2@m" uk-grid>
+                  <template v-for="product in getProducts">
+                      <template v-for="cart in getCartContent" v-if="product.id === cart.product_id">
+
+                          <div>
+                              {{product.name}} x {{cart.quantity}}
+                          </div>
+                          <div class="uk-text-right">
+                              {{cart.line_subtotal}}
+                          </div>
+
+                      </template>
+                  </template>
+                  <div>TOTAL:</div>
+                  <div class="uk-text-right">{{getCartTotals.subtotal}}</div>
+              </div>
           </div>
       </div>
 
-      <hr/>
+      <div class="uk-margin-bottom btn-order">
+          <button class="uk-button uk-button-primary" @click.prevent="payment">Payment</button>
+      </div>
 
   </div>
+
 </template>
 
 <script>
 
 import Loader from "../../partials/Loader.vue";
 import _ from "underscore";
+import Uikit from 'uikit';
 
 export default {
 
@@ -122,15 +136,39 @@ export default {
         }
    },
 
-  computed: {},
+  computed: {
+      getCartContent() {
+          return this.$store.getters['cart/getCartContent'];
+      },
+      getProducts() {
+          return this.$store.getters['shop/getProducts'];
+      },
+      getCartTotals() {
+          return this.$store.getters['cart/getCartTotals'];
+      }
+  },
 
   methods: {
 
       payment() {
-          // Нужно заполнить массив line_items объектами из корзины
-          // После создания заказа необходимо очистить корзину и перенаправить на страницу завершения!
-          const data = this.dataOrder;
-          this.$store.dispatch("checkout/createOrder",{ data : data });
+
+          let flag = false;
+          _.each(this.dataOrder.billing, function (element) {
+
+              if (_.isEmpty(element)) {
+                  flag = true;
+              }
+          });
+
+          if(!flag) {
+              // После создания заказа необходимо очистить корзину и перенаправить на страницу завершения!
+              const data = this.dataOrder;
+              this.$store.dispatch("checkout/createOrder",{ data : data });
+          }
+
+          else {
+              Uikit.modal.alert('Fields is empty');
+          }
       }
   },
 
@@ -145,7 +183,7 @@ export default {
 
            this.dataOrder.line_items.push({ product_id : arr[i].product_id, quantity:arr[i].quantity });
        }
-       console.log(this.dataOrder.line_items);
+       //console.log(this.dataOrder.line_items);
 
   },
 
@@ -164,12 +202,25 @@ export default {
 
       .payment {
           .uk-container {
+              h3 {
+                  border-bottom: 1px solid #e0e0e0;
+                  padding-bottom: 15px;
+                  span {
+                      font-weight: bold;
+                  }
+              }
               & > * {
                   font-size: 16px;
               }
+              & > div {
+                   div {
+                      margin: 10px 0;
+                  }
+              }
           }
-
       }
-
+      .btn-order {
+          text-align: right;
+      }
   }
 </style>

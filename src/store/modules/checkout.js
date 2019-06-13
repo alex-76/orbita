@@ -17,13 +17,11 @@ const actions = {
 
     createOrder({commit}, payload) {
 
-        //console.log(payload.data);
-
         api.wcApi.createOrder( payload.data,function(order) {
 
-             console.log('Response: ' + order.id);
-             //commit(types.STORE_CART_PRODUCTS, cart );
-             //commit(types.CART_LOADED, true);
+              commit('cart/'+types.STORE_CART_CLEAR, null, { root: true } );
+              commit('cart/'+types.CART_LOADED, true, { root: true } );
+              //commit('namespace/TOGGLE_SAVING', null, { root: true });
         });
     },
 
