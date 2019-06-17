@@ -31,6 +31,9 @@ const actions = {
         api.wcApi.removeItemCart(payload.key,function(cart) {
             commit(types.STORE_CART_REMOVE, payload.id );
         });
+        api.wcApi.getCartTotals(function(total) {
+            commit(types.STORE_CART_TOTAL, total );
+        });
     },
     clearCart({commit}) {
 
