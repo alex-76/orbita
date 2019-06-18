@@ -67,7 +67,7 @@ export default {
       addCart() {
           this.$store.dispatch("cart/addCart", { id: this.$route.params.productID, q: this.quantity });
           UIkit.notification("<span uk-icon='icon: check'></span> Product added", {
-              pos: 'bottom-right',
+              pos: 'top-center',
               status: 'success',
               timeout: 2000
           });

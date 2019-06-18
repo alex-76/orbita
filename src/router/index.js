@@ -34,7 +34,7 @@ const router = new Router({
       props: true
     },
     {
-      path: "/:shopSlug",
+      path: "/shop",
       name: "Shop",
       component: Shop,
     },

@@ -43,7 +43,6 @@ const postsApi = {
         axios
             .get(SETTINGS.API_BASE_PATH + "posts?per_page=" + limit)
             .then(response => {
-                //console.log(response.data);
                 cb(response.data);
             })
             .catch(e => {
@@ -100,9 +99,6 @@ const wcApi = {
 
     // Create Order
     createOrder(data, cb) {
-
-        //console.log(data);
-
         new WooCommerceAPI({
             url: SETTINGS.URL_RESOURSE,
             consumerKey: SETTINGS.WC.CONSUMERKEY,
@@ -116,7 +112,6 @@ const wcApi = {
 
     // Get Cart Products
     getCartContent() {
-
         axios.get(SETTINGS.URL_RESOURSE+'/wp-json/wc/v2/cart/').
         then(response => {
             console.log(response.data);
@@ -170,7 +165,6 @@ const wcApi = {
         catch((error) => {
             console.log(error);
         });
-
     }
 };
 

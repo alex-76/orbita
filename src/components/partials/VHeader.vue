@@ -16,7 +16,7 @@
             <router-link :to="{name: 'Post', params: {postSlug: 'news'}}" class="nav-link">News</router-link>
           </li>
           <li>
-              <router-link :to="{name: 'Shop', params: {shopSlug: 'shop'}}" class="nav-link">Shop</router-link>
+              <router-link to="/shop" class="nav-link">Shop</router-link>
           </li>
           <li>
             <router-link :to="{name: 'Cart', params: {pageSlug: 'cart'}}" class="nav-link">Cart</router-link>

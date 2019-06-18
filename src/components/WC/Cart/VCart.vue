@@ -106,9 +106,7 @@ export default {
 
   mounted:function() {},
 
-  beforeUpdate() {
-      //this.$store.dispatch("cart/cartTotals"); // подумать куда вставить этото вызов метода для обновления общей суммы корзины (зацыклино)!!!
-  },
+  beforeUpdate() {},
 
   updated() {}
 
