@@ -22,18 +22,6 @@ const router = new Router({
       component: Home
     },
     {
-      path: "/:pageSlug",
-      name: "Page",
-      component: Page,
-      props: true
-    },
-    {
-      path: "/:postSlug",
-      name: "Post",
-      component: Post,
-      props: true
-    },
-    {
       path: "/shop",
       name: "Shop",
       component: Shop,
@@ -53,6 +41,18 @@ const router = new Router({
       path: "/checkout",
       name: "Checkout",
       component: Checkout
+    },
+    {
+      path: "/:pageSlug",
+      name: "Page",
+      component: Page,
+      props: true
+    },
+    {
+      path: "/:postSlug",
+      name: "Post",
+      component: Post,
+      props: true
     },
     {
       path: '*',
