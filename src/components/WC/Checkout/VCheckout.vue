@@ -2,81 +2,89 @@
 
   <div class="container-checkout">
 
-      <template v-if="!loadedCheckout">
+      <template v-if="cartLoaded">
 
-          <h2 class="uk-margin uk-text-center uk-text-uppercase">Checkout page</h2>
+          <template v-if="!loadedCheckout">
 
-          <form>
-              <fieldset class="uk-fieldset">
+              <h2 class="uk-margin uk-text-center uk-text-uppercase">Checkout</h2>
 
-                  <legend class="uk-legend">Billing</legend>
+              <form>
+                  <fieldset class="uk-fieldset">
 
-                  <div class="uk-margin">
-                      <input v-model.trim="dataOrder.billing.first_name" class="uk-input uk-width-1-2" type="text" name="first_name" placeholder="First Name">
-                  </div>
-                  <div class="uk-margin">
-                      <input v-model.trim="dataOrder.billing.last_name" class="uk-input uk-width-1-2" type="text" name="last_name" placeholder="Last Name">
-                  </div>
-                  <div class="uk-margin">
-                      <input v-model.trim="dataOrder.billing.address_1" class="uk-input uk-width-1-2" type="text" name="address_1" placeholder="Address">
-                  </div>
-                  <div class="uk-margin">
-                      <input v-model.trim="dataOrder.billing.city" class="uk-input uk-width-1-2" type="text" name="city" placeholder="City">
-                  </div>
-                  <div class="uk-margin">
-                      <input v-model.trim="dataOrder.billing.state" class="uk-input uk-width-1-2" type="text" name="state" placeholder="State">
-                  </div>
-                  <div class="uk-margin">
-                      <input v-model.trim="dataOrder.billing.postcode" class="uk-input uk-width-1-2" type="text" name="postcode" placeholder="Postcode">
-                  </div>
-                  <div class="uk-margin">
-                      <input v-model.trim="dataOrder.billing.country" class="uk-input uk-width-1-2" type="text" name="country" placeholder="Country">
-                  </div>
-                  <div class="uk-margin">
-                      <input v-model.trim="dataOrder.billing.email" class="uk-input uk-width-1-2" type="text" name="email" placeholder="Email">
-                  </div>
-                  <div class="uk-margin">
-                      <input v-model.trim="dataOrder.billing.phone" class="uk-input uk-width-1-2" type="text" name="phone" placeholder="Phone">
-                  </div>
+                      <legend class="uk-legend">Billing</legend>
 
-              </fieldset>
-          </form>
+                      <div class="uk-margin">
+                          <input v-model.trim="dataOrder.billing.first_name" class="uk-input uk-width-1-2" type="text" name="first_name" placeholder="First Name">
+                      </div>
+                      <div class="uk-margin">
+                          <input v-model.trim="dataOrder.billing.last_name" class="uk-input uk-width-1-2" type="text" name="last_name" placeholder="Last Name">
+                      </div>
+                      <div class="uk-margin">
+                          <input v-model.trim="dataOrder.billing.address_1" class="uk-input uk-width-1-2" type="text" name="address_1" placeholder="Address">
+                      </div>
+                      <div class="uk-margin">
+                          <input v-model.trim="dataOrder.billing.city" class="uk-input uk-width-1-2" type="text" name="city" placeholder="City">
+                      </div>
+                      <div class="uk-margin">
+                          <input v-model.trim="dataOrder.billing.state" class="uk-input uk-width-1-2" type="text" name="state" placeholder="State">
+                      </div>
+                      <div class="uk-margin">
+                          <input v-model.trim="dataOrder.billing.postcode" class="uk-input uk-width-1-2" type="text" name="postcode" placeholder="Postcode">
+                      </div>
+                      <div class="uk-margin">
+                          <input v-model.trim="dataOrder.billing.country" class="uk-input uk-width-1-2" type="text" name="country" placeholder="Country">
+                      </div>
+                      <div class="uk-margin">
+                          <input v-model.trim="dataOrder.billing.email" class="uk-input uk-width-1-2" type="text" name="email" placeholder="Email">
+                      </div>
+                      <div class="uk-margin">
+                          <input v-model.trim="dataOrder.billing.phone" class="uk-input uk-width-1-2" type="text" name="phone" placeholder="Phone">
+                      </div>
 
-          <div class="uk-section uk-section-muted uk-margin-top uk-margin-bottom uk-padding payment">
-              <div class="uk-container">
+                  </fieldset>
+              </form>
 
-                  <h3 class="uk-flex uk-flex-between">
-                      <span>Product</span>
-                      <span>Subtotal</span>
-                  </h3>
+              <div class="uk-section uk-section-muted uk-margin-top uk-margin-bottom uk-padding payment">
+                  <div class="uk-container">
 
-                  <div class="uk-child-width-1-2@m" uk-grid>
-                      <template v-for="product in getProducts">
-                          <template v-for="cart in getCartContent" v-if="product.id === cart.product_id">
+                      <h3 class="uk-flex uk-flex-between">
+                          <span>Product</span>
+                          <span>Subtotal</span>
+                      </h3>
 
-                              <div>
-                                  {{product.name}} x {{cart.quantity}}
-                              </div>
-                              <div class="uk-text-right">
-                                  {{cart.line_subtotal}}
-                              </div>
+                      <div class="uk-child-width-1-2@m" uk-grid>
+                          <template v-for="product in getProducts">
+                              <template v-for="cart in getCartContent" v-if="product.id === cart.product_id">
 
+                                  <div>
+                                      {{product.name}} x {{cart.quantity}}
+                                  </div>
+                                  <div class="uk-text-right">
+                                      {{cart.line_subtotal}}
+                                  </div>
+
+                              </template>
                           </template>
-                      </template>
-                      <div>TOTAL:</div>
-                      <div class="uk-text-right">{{getCartTotals.subtotal}}</div>
+                          <div>TOTAL:</div>
+                          <div class="uk-text-right">{{getCartTotals.subtotal}}</div>
+                      </div>
                   </div>
               </div>
-          </div>
 
-          <div class="uk-margin-bottom btn-order">
-              <button class="uk-button uk-button-primary" @click.prevent="payment">Payment</button>
-          </div>
+              <div class="uk-margin-bottom btn-order">
+                  <button class="uk-button uk-button-primary" @click.prevent="payment">Payment</button>
+              </div>
 
-      </template>
+          </template>
+
+          <template v-else>
+              <h3>Order successfully submitted</h3>
+          </template>
+
+    </template>
 
       <template v-else>
-          <h3>Order successfully submitted</h3>
+          <h3>Order is empty</h3>
       </template>
 
   </div>
@@ -156,6 +164,9 @@ export default {
       },
       loadedCheckout() {
           return this.$store.getters['checkout/loadedCheckout'];
+      },
+      cartLoaded() {
+          return this.$store.getters['cart/cartLoaded'];
       },
   },
 

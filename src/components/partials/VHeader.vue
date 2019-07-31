@@ -21,7 +21,6 @@
           <li>
             <router-link :to="{name: 'Cart', params: {pageSlug: 'cart'}}" class="nav-link">Cart</router-link>
           </li>
-
         </ul>
 
       </div>
