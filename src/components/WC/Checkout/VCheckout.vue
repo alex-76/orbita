@@ -168,6 +168,9 @@ export default {
       cartLoaded() {
           return this.$store.getters['cart/cartLoaded'];
       },
+      showPaymentGateway() {
+          return this.$store.getters['checkout/showPaymentGateway'];
+      }
   },
 
   methods: {

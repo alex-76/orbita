@@ -165,6 +165,17 @@ const wcApi = {
         catch((error) => {
             console.log(error);
         });
+    },
+
+    // Show Payment Gateway (edit cod)
+    showPaymentGateway(cb) {
+        axios.get(SETTINGS.URL_RESOURSE+'/wp-json/wc/v3/payment_gateways').
+        then(response => {
+            cb(response.data);
+        }).
+        catch((error) => {
+            console.log(error);
+        });
     }
 };
 

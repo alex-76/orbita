@@ -26,6 +26,16 @@ const actions = {
         });
     },
 
+    // Edit cod payment
+    showPaymentGateway({commit}) {
+
+        api.wcApi.showPaymentGateway(function(gateway) {
+
+            console.log(gateway);
+
+        })
+    },
+
 };
 
 const mutations = {
