@@ -69,6 +69,17 @@
                           <div class="uk-text-right">{{getCartTotals.subtotal}}</div>
                       </div>
                   </div>
+                  <hr>
+                  <div class="uk-container">
+                      <div>Payments:</div>
+                      <template v-for="(element, index) in listPayments">
+
+                          <p>Item: {{element[index].title}}</p>
+
+                      </template>
+
+                  </div>
+
               </div>
 
               <div class="uk-margin-bottom btn-order">
@@ -168,8 +179,8 @@ export default {
       cartLoaded() {
           return this.$store.getters['cart/cartLoaded'];
       },
-      showPaymentGateway() {
-          return this.$store.getters['checkout/showPaymentGateway'];
+      listPayments() {
+         return this.$store.getters['checkout/listPayments'];
       }
   },
 
@@ -208,6 +219,8 @@ export default {
            this.dataOrder.line_items.push({ product_id : arr[i].product_id, quantity:arr[i].quantity });
        }
        //console.log(this.dataOrder.line_items);
+
+      this.$store.dispatch("checkout/showPaymentGateway");
 
   },
 

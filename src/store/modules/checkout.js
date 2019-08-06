@@ -5,10 +5,12 @@ import * as types from "../mutation-types";
 
 const state = {
     loadedCheckout : false,
+    listPayments : [],
 };
 
 const getters = {
     loadedCheckout: state => state.loadedCheckout,
+    listPayments: state => state.listPayments
 };
 
 const actions = {
@@ -26,12 +28,14 @@ const actions = {
         });
     },
 
-    // Edit cod payment
     showPaymentGateway({commit}) {
 
         api.wcApi.showPaymentGateway(function(gateway) {
 
-            console.log(gateway);
+            commit(types.CHECKOUT_PAYMENTS, gateway);
+
+            //console.log(gateway);
+            //return gateway;
 
         })
     },
@@ -41,6 +45,10 @@ const actions = {
 const mutations = {
     [types.CHECKOUT_LOADED](state, val) {
         state.loadedCheckout = val;
+    },
+    [types.CHECKOUT_PAYMENTS](state, val) {
+        state.listPayments = [];
+        state.listPayments.push(val);
     },
 };
 

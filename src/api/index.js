@@ -167,16 +167,19 @@ const wcApi = {
         });
     },
 
-    // Show Payment Gateway (edit cod)
     showPaymentGateway(cb) {
-        axios.get(SETTINGS.URL_RESOURSE+'/wp-json/wc/v3/payment_gateways').
-        then(response => {
-            cb(response.data);
-        }).
-        catch((error) => {
-            console.log(error);
-        });
-    }
+        new WooCommerceAPI({
+            url: SETTINGS.URL_RESOURSE,
+            consumerKey: SETTINGS.WC.CONSUMERKEY,
+            consumerSecret: SETTINGS.WC.CONSUMERSECRET,
+            wpAPI: true,
+            version: 'wc/v3'
+        }).get('payment_gateways',function(err, data){
+            cb(JSON.parse(data.toJSON().body));
+        })
+    },
+
+
 };
 
 export default {
