@@ -73,13 +73,11 @@
                   <div class="uk-container">
                       <div>Payments:</div>
                       <template v-for="(element, index) in listPayments">
-
-                          <p>Item: {{element[index].title}}</p>
-
+                          <p>{{element[index].title}}</p>
+                          <p>{{element[index].description}}</p>
                       </template>
 
                   </div>
-
               </div>
 
               <div class="uk-margin-bottom btn-order">
@@ -220,6 +218,7 @@ export default {
        }
        //console.log(this.dataOrder.line_items);
 
+      // Edit block
       this.$store.dispatch("checkout/showPaymentGateway");
 
   },

@@ -34,9 +34,6 @@ const actions = {
 
             commit(types.CHECKOUT_PAYMENTS, gateway);
 
-            //console.log(gateway);
-            //return gateway;
-
         })
     },
 
